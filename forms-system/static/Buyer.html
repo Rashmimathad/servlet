@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buyer Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="RealEstate.html">Real Estate Forms</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h1>Buyer Form</h1>
+<form action="buyer" method="post">
+  Buyer Name : <input type="text" name="buyerName"/><br><br>
+  Email : <input type="email" name="email"/><br><br>
+  Mobile Number : <input type="text" name="mobileNumber"/><br><br>
+  Current Address  : <input type="text" name="currentAddress"/><br><br>
+  Preferred Property Type :
+  <select name="propertyType" id="propertyType">select the property type
+    <option value="Villa">Villa</option>
+    <option value="Apartment">Apartment</option>
+    <option value="Plot">Plot</option>
+    <option value="Commercial Space">Commercial Space</option>
+  </select><br><br>
+  Budget Range : <input type="text" name="budgetRange"/><br><br>
+  Property Size Requirement : <input type="text" name="propertySizeRequirement"/><br><br>
+  Preferred Location : <input type="text" name="preferredLocation"/><br><br>
+  Purpose Of Purchase : <input type="radio" name="purposeOfPurchase" value="Investment">Investment
+  <input type="radio" name="purposeOfPurchase" value="Self-use">Self-use
+  <input type="radio" name="purchaseOfPurchase" value="Rental">Rental <br><br>
+  Source Of Information: <input type="radio" name="sourceOfInformation" value="Online Ad">Online Ad
+  <input type="radio" name="sourceOfInformation" value="Friend">Friend <br><br>
+  <input type="submit" value="SUBMIT"/>
+</form>
+</body>
+</html>
