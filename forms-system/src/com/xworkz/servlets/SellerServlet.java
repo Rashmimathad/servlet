@@ -29,5 +29,9 @@ public class SellerServlet extends GenericServlet {
         System.out.println("Availability Status : "+servletRequest.getParameter("availabilityStatus"));
         System.out.println("Mode Of Contact : "+servletRequest.getParameter("modeOfContact"));
         System.out.println("---------------------------------------------------------------------------------------");
+        servletResponse.setContentType("text/html");
+        servletResponse.getWriter().println("Data Saved Successfully....."+"{ Seller Name ; "+servletRequest.getParameter("sellerName")+"\nEmail : "+servletRequest.getParameter("email")+"\nMobile Number : "+servletRequest.getParameter("mobileNo")
+        +"\nProperty Type : "+servletRequest.getParameter("propertyType")+"\nProperty Address : "+servletRequest.getParameter("propertyAddress")+"\nWater and Electricity Availability : "+servletRequest.getParameter("waterAndElectricityAvailability")+"\nOwnership Type : "+servletRequest.getParameter("ownershipType")
+        +"\nAvailability Status : "+servletRequest.getParameter("availabilityStatus")+"\nMode Of Contact : "+servletRequest.getParameter("modeOfContact")+"}");
     }
 }

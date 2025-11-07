@@ -33,5 +33,12 @@ public class DrivingLicenseServlet extends GenericServlet {
         System.out.println("Type Of License : "+req.getParameter("typeOfLicense"));
         System.out.println("International Driving Permit Required? "+req.getParameter("internationalDrivingPermitRequired"));
         System.out.println("-------------------------------------------------------------------------------");
+        resp.setContentType("text/html");
+        resp.getWriter().println("Data Saved Successfully........."+"\n{\nFirst Name : "+req.getParameter("firstName")+"\nLast Name : "+req.getParameter("lastName")+
+"\nAge : "+req.getParameter("age")+"\nGender : "+req.getParameter("gender")+"\nDate Of Birth : "+req.getParameter("dob")+"\nEmail : "+req.getParameter("email")+
+     "\nMobile No : "+req.getParameter("mobileNo")+"\nAlternate Mobile No : "+req.getParameter("alternateMobileNo")+"\nNationality : "+req.getParameter("nationality")+
+       "\nOccupation : "+req.getParameter("occupation")+"\nResidential Address : "+req.getParameter("residentialAddress")+"\nPermanent Address : "+req.getParameter("permanentAddress")+
+        "\nMarital Status : "+req.getParameter("maritalStatus")+"\nType Of License : "+req.getParameter("typeOfLicense")+"\nInternational Driving Permit Required? "+req.getParameter("internationalDrivingPermitRequired")+"\n}");
+
     }
 }

@@ -30,5 +30,11 @@ public class BuyerServlet extends GenericServlet {
         System.out.println("Purpose of Purchase : "+servletRequest.getParameter("purposeOfPurchase"));
         System.out.println("Source Of Information : "+servletRequest.getParameter("sourceOfInformation"));
         System.out.println("------------------------------------------------------------------------------------");
+
+        servletResponse.setContentType("text/html");
+        servletResponse.getWriter().println("Data Saved Successfully....."+"\n{Buyer Name : "+ servletRequest.getParameter("buyerName")+"\nEmail : "+servletRequest.getParameter("email")+"\nMobile Number : "+servletRequest.getParameter("mobileNumber")
+        +"\nCurrent Address : "+servletRequest.getParameter("currentAddress")+"\nPreferred Property Type : "+servletRequest.getParameter("propertyType")+"\nBudget Range : "+servletRequest.getParameter("budgetRange")+"rs"
+        +"\nProperty Size Requirement : "+servletRequest.getParameter("propertySizeRequirement")+" sq.ft"+"\nPreferred Location : "+servletRequest.getParameter("preferredLocation")+"\nPurpose of Purchase : "+servletRequest.getParameter("purposeOfPurchase")
+        +"\nSource Of Information : "+servletRequest.getParameter("sourceOfInformation")+"}");
     }
 }
