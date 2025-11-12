@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+<div class="bg-info-subtle p-2 text-dark bg-opacity-25">
+<h1 class="text-center"><b><i>Blood Booking Form</i></b></h1>
+<form action="bloodBooking" method="post">
+    <div class="col-md-4">
+        <label for="inputName" class="form-label"><b>Name</b></label>
+        <input type="text" class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" id="inputName" name="inputName" placeholder="enter your name">
+    </div>
+    <br>
+    <div class="col-md-4">
+        <label for="inputContactNumber" class="form-label"><b>Contact Number</b></label>
+        <input type="text" class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number">
+    </div>
+    <br>
+    <div class="mb-3">
+        <label class="form-label"><b>Gender</b></label><br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input bg-info-subtle p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" value="Male" required>
+            <label class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input bg-info-subtle p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" value="Female">
+            <label class="form-check-label">Female</label>
+        </div>
+    </div>
+    <br>
+    <div class="mb-3">
+        <label class="form-label"><b>Select Blood Group</b></label>
+        <select class="form-select bg-info-subtle p-2 text-dark bg-opacity-10 border-info" name="bloodGroup" required>
+            <option value="">-- Choose Blood Group --</option>
+            <option value="A_POSITIVE">A+ve</option>
+            <option value="A_NEGATIVE">A-ve</option>
+            <option value="B_POSITIVE">B+ve</option>
+            <option value="B_NEGATIVE">B-ve</option>
+            <option value="AB_POSITIVE">AB+ve</option>
+            <option value="AB_NEGATIVE">AB-ve</option>
+            <option value="O_POSITIVE">O+ve</option>
+            <option value="O_NEGATIVE">O-ve</option>
+        </select>
+    </div>
+    <br>
+    <div class="mb-1">
+        <label class="form-label"><b>Delivery Address</b></label>
+        <textarea class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" name="deliveryAddress" rows="3" placeholder="enter delivery Address"></textarea>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Place Order</button>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Ticket Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+<div class="bg-danger p-2 text-dark bg-opacity-25">
+  <h1 class="text-center"><b><i>Movie Ticket Form</i></b></h1>
+  <br>
+  <form action="movieTicket" method="post">
+    <div class="col-md-4">
+      <label for="inputName" class="form-label"><b>Name</b></label>
+      <input type="text" class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" id="inputName" name="inputName" placeholder="enter your name">
+    </div>
+    <br>
+    <div class="col-md-4">
+      <label for="inputContactNumber" class="form-label"><b>Contact Number</b></label>
+      <input type="text" class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number">
+    </div>
+    <br>
+    <div class="mb-3">
+      <label class="form-label"><b>Select Movie</b></label>
+      <select class="form-select bg-danger p-2 text-dark bg-opacity-10 border-danger" name="inputMovieName" required>
+        <option value="">-- Choose a Movie --</option>
+        <option value="Inception">Inception</option>
+        <option value="Avengers">Avengers</option>
+        <option value="Bahubali">Bahubali</option>
+        <option value="Kantara">Kantara</option>
+      </select>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label class="form-label"><b>Special Requests</b></label>
+      <textarea class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" name="specialRequests" rows="3" placeholder="Any seating or snack preferences?"></textarea>
+    </div>
+    <br>
+    <fieldset class="row mb-3">
+      <legend class="col-form-label col-sm-2 pt-0"><b>Select Ticket Type</b></legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input bg-danger p-2 text-dark bg-opacity-10 border-danger" type="radio" name="ticketType" id="gridRadios1" value="Regular" checked>
+          <label class="form-check-label" for="gridRadios1">
+            Regular
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input bg-danger p-2 text-dark bg-opacity-10 border-danger" type="radio" name="ticketType" id="gridRadios2" value="Recliners">
+          <label class="form-check-label" for="gridRadios2">
+            Recliners
+          </label>
+        </div>
+      </div>
+    </fieldset>
+    <br>
+      <button type="submit" class="btn btn-danger">Book Ticket</button>
+  </form>
+</div>
+</body>
+</html>
