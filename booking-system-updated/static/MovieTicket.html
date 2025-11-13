@@ -21,12 +21,12 @@
   <form action="movieTicket" method="post">
     <div class="col-md-4">
       <label for="inputName" class="form-label"><b>Name</b></label>
-      <input type="text" class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" id="inputName" name="inputName" placeholder="enter your name">
+      <input type="text" class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" id="inputName" name="inputName" placeholder="enter your name" required>
     </div>
     <br>
     <div class="col-md-4">
       <label for="inputContactNumber" class="form-label"><b>Contact Number</b></label>
-      <input type="text" class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number">
+      <input type="text" class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number" required>
     </div>
     <br>
     <div class="mb-3">
@@ -42,14 +42,14 @@
     <br>
     <div class="mb-3">
       <label class="form-label"><b>Special Requests</b></label>
-      <textarea class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" name="specialRequests" rows="3" placeholder="Any seating or snack preferences?"></textarea>
+      <textarea class="form-control bg-danger p-2 text-dark bg-opacity-10 border-danger" name="specialRequests" rows="3" placeholder="Any seating or snack preferences?" required></textarea>
     </div>
     <br>
     <fieldset class="row mb-3">
       <legend class="col-form-label col-sm-2 pt-0"><b>Select Ticket Type</b></legend>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input bg-danger p-2 text-dark bg-opacity-10 border-danger" type="radio" name="ticketType" id="gridRadios1" value="Regular" checked>
+          <input class="form-check-input bg-danger p-2 text-dark bg-opacity-10 border-danger" type="radio" name="ticketType" id="gridRadios1" value="Regular" required>
           <label class="form-check-label" for="gridRadios1">
             Regular
           </label>
@@ -63,7 +63,8 @@
       </div>
     </fieldset>
     <br>
-      <button type="submit" class="btn btn-danger">Book Ticket</button>
+    <button type="submit" class="btn btn-danger">Book Movie Ticket</button>
+
   </form>
 </div>
 </body>

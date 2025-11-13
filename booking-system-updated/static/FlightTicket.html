@@ -21,30 +21,30 @@
 <form action="flightTicket" method="post">
     <div class="col-md-4">
         <label for="inputName" class="form-label"><b>Name</b></label>
-        <input type="text" class="form-control bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputName" name="inputName" placeholder="enter your name">
+        <input type="text" class="form-control bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputName" name="inputName" placeholder="enter your name" required>
     </div>
     <br>
     <div class="col-md-4">
         <label for="inputContactNumber" class="form-label"><b>Contact Number</b></label>
-        <input type="text" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number">
+        <input type="text" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number" required>
     </div>
     <br>
     <div class="col-md-4">
         <label for="inputAge" class="form-label"><b>Age</b></label>
-        <input type="number" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputAge" name="inputAge">
+        <input type="number" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputAge" name="inputAge" required>
     </div>
     <br>
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0"><b>Select Gender</b></legend>
         <div class="col-sm-10">
             <div class="form-check">
-                <input class="form-check-input  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" id="gridRadios1" value="Female" checked>
+                <input class="form-check-input  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" id="gridRadios1" value="Female" required>
                 <label class="form-check-label" for="gridRadios1">
                     Female
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" id="gridRadios2" value="Male">
+                <input class="form-check-input  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" id="gridRadios2" value="Male" required>
                 <label class="form-check-label" for="gridRadios2">
                     Male
                 </label>
@@ -54,17 +54,26 @@
     <br>
     <div class="col-md-4">
         <label for="inputSource" class="form-label"><b>Source Station</b></label>
-        <input type="text" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputSource" name="inputSource" placeholder="enter source station">
+        <input type="text" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputSource" name="inputSource" placeholder="enter source station" required>
     </div>
     <br>
     <div class="col-md-4">
         <label for="inputDestination" class="form-label"><b>Destination Station</b></label>
-        <input type="text" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputDestination" name="inputDestination" placeholder="enter destination station">
+        <input type="text" class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" id="inputDestination" name="inputDestination" placeholder="enter destination station" required>
     </div>
     <br>
     <div class="mb-3">
+        <label class="form-label"><b>Select Ticket Type</b></label>
+        <select class="form-select  p-2   bg-info bg-gradient text-dark bg-opacity-10 border-info" name="inputTicketType" required>
+            <option value="">-- select ticket type --</option>
+            <option value="Economy">Economy</option>
+            <option value="Business">Business</option>
+            <option value="First Class">First Class</option>
+        </select>
+    </div>
+    <div class="mb-3">
         <label class="form-label"><b>Special Requests</b></label>
-        <textarea class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" name="specialRequests" rows="3" placeholder="Any seating or snack preferences?"></textarea>
+        <textarea class="form-control  bg-info bg-gradient p-2 text-dark bg-opacity-10 border-info" name="specialRequests" rows="3" placeholder="Any seating or snack preferences?" required></textarea>
     </div>
     <br>
     <button type="submit" class="btn btn-primary">Book Flight Ticket</button>

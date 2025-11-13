@@ -22,17 +22,17 @@
 <form action="productPurchase" method="post">
     <div class="col-md-4">
         <label for="inputUserName" class="form-label"><b>User Name</b></label>
-        <input type="text" class="form-control" id="inputUserName" name="inputUserName" placeholder="enter user name">
+        <input type="text" class="form-control" id="inputUserName" name="inputUserName" placeholder="enter user name" required>
     </div>
     <br>
     <div class="col-md-4">
         <label for="inputContactNumber" class="form-label"><b>Contact Number</b></label>
-        <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number">
+        <input type="text" class="form-control" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number" required>
     </div>
     <br>
     <div class="col-md-4">
         <label for="inputProductName" class="form-label"><b>Product Name</b></label>
-        <input type="text" class="form-control" id="inputProductName" name="inputProductName" placeholder="enter product name">
+        <input type="text" class="form-control" id="inputProductName" name="inputProductName" placeholder="enter product name" required>
     </div>
     <br>
     <div class="mb-3">
@@ -48,20 +48,20 @@
     <br>
     <div class="mb-3">
         <label class="form-label"><b>Shipping Address</b></label>
-        <textarea class="form-control" name="shippingAddress" rows="3" placeholder="enter shipping address"></textarea>
+        <textarea class="form-control" name="shippingAddress" rows="3" placeholder="enter shipping address" required></textarea>
     </div>
     <br>
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0"><b>Is Billing Address same as Shipping Address?</b></legend>
         <div class="col-sm-10">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="billingAddress" id="gridRadios1" value="Yes" checked>
+                <input class="form-check-input" type="radio" name="billingAddress" id="gridRadios1" value="Yes" required>
                 <label class="form-check-label" for="gridRadios1">
                     Yes
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="billingAddress" id="gridRadios2" value="No">
+                <input class="form-check-input" type="radio" name="billingAddress" id="gridRadios2" value="No" required>
                 <label class="form-check-label" for="gridRadios2">
                     No
                 </label>
@@ -70,6 +70,7 @@
     </fieldset>
     <br>
     <button type="submit" class="btn btn-dark">Buy Product</button>
+
 </form>
 </div>
 </body>

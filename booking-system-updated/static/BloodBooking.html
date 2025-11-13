@@ -20,12 +20,12 @@
 <form action="bloodBooking" method="post">
     <div class="col-md-4">
         <label for="inputName" class="form-label"><b>Name</b></label>
-        <input type="text" class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" id="inputName" name="inputName" placeholder="enter your name">
+        <input type="text" class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" id="inputName" name="inputName" placeholder="enter your name" required>
     </div>
     <br>
     <div class="col-md-4">
         <label for="inputContactNumber" class="form-label"><b>Contact Number</b></label>
-        <input type="text" class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number">
+        <input type="text" class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" id="inputContactNumber" name="inputContactNumber" placeholder="enter contact number" required>
     </div>
     <br>
     <div class="mb-3">
@@ -35,14 +35,14 @@
             <label class="form-check-label">Male</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input bg-info-subtle p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" value="Female">
+            <input class="form-check-input bg-info-subtle p-2 text-dark bg-opacity-10 border-info" type="radio" name="gender" value="Female" required>
             <label class="form-check-label">Female</label>
         </div>
     </div>
     <br>
     <div class="mb-3">
         <label class="form-label"><b>Select Blood Group</b></label>
-        <select class="form-select bg-info-subtle p-2 text-dark bg-opacity-10 border-info" name="bloodGroup" required>
+        <select class="form-select bg-info p-2 text-dark bg-opacity-10 border-info" name="bloodGroup" required>
             <option value="">-- Choose Blood Group --</option>
             <option value="A_POSITIVE">A+ve</option>
             <option value="A_NEGATIVE">A-ve</option>
@@ -57,7 +57,7 @@
     <br>
     <div class="mb-1">
         <label class="form-label"><b>Delivery Address</b></label>
-        <textarea class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" name="deliveryAddress" rows="3" placeholder="enter delivery Address"></textarea>
+        <textarea class="form-control bg-info-subtle p-2 text-dark bg-opacity-10 border-info" name="deliveryAddress" rows="3" placeholder="enter delivery Address" required></textarea>
     </div>
     <br>
     <button type="submit" class="btn btn-primary">Place Order</button>
