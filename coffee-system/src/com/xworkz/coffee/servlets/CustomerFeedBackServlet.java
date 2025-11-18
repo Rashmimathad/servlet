@@ -1,4 +1,8 @@
-package com.xworkz.servlets;
+package com.xworkz.coffee.servlets;
+
+import com.xworkz.coffee.dto.CustomerFeedbackDto;
+import com.xworkz.coffee.service.CustomerFeedbackService;
+import com.xworkz.coffee.service.impl.CustomerFeedbackServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,5 +25,9 @@ public class CustomerFeedBackServlet extends HttpServlet {
         req.setAttribute("customerRating",customerRating);
 
         req.getRequestDispatcher("CustomerFeedBackResult.jsp").forward(req,resp);
+
+        CustomerFeedbackDto customerFeedbackDto = new CustomerFeedbackDto(name,email,comments,customerRating);
+        CustomerFeedbackService customerFeedbackService = new CustomerFeedbackServiceImpl();
+        customerFeedbackService.validateAndSave(customerFeedbackDto);
     }
 }

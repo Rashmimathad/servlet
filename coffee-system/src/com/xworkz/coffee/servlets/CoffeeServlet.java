@@ -1,4 +1,8 @@
-package com.xworkz.servlets;
+package com.xworkz.coffee.servlets;
+
+import com.xworkz.coffee.dto.CoffeeDto;
+import com.xworkz.coffee.service.CoffeeService;
+import com.xworkz.coffee.service.impl.CoffeeServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,5 +28,9 @@ public class CoffeeServlet extends HttpServlet {
         req.setAttribute("totalCost",price*quantity);
 
         req.getRequestDispatcher("CoffeeResult.jsp").forward(req,resp);
+
+        CoffeeDto coffeeDto=new CoffeeDto(coffeeType,price,farmerName,quantity,location);
+        CoffeeService coffeeService = new CoffeeServiceImpl();
+        coffeeService.validateAndSave(coffeeDto);
     }
 }

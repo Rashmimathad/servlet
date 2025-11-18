@@ -1,4 +1,8 @@
-package com.xworkz.servlets;
+package com.xworkz.coffee.servlets;
+
+import com.xworkz.coffee.dto.CoffeeLandDto;
+import com.xworkz.coffee.service.CoffeeLandService;
+import com.xworkz.coffee.service.impl.CoffeeLandServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,5 +28,9 @@ public class CoffeeLandServlet extends HttpServlet {
         req.setAttribute("profitMade",profitMade);
         req.setAttribute("fertilizerQuantityUsed",fertilizerQuantityUsed);
         req.getRequestDispatcher("CoffeeLandResult.jsp").forward(req,resp);
+
+        CoffeeLandDto coffeeLandDto = new CoffeeLandDto(sizeInAcre,totalPants,totalYield,expenditure,profitMade,fertilizerQuantityUsed);
+        CoffeeLandService coffeeLandService = new CoffeeLandServiceImpl();
+        coffeeLandService.validateAndSave(coffeeLandDto);
     }
 }
