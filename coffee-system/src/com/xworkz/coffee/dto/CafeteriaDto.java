@@ -6,7 +6,7 @@ import java.util.Objects;
 public class CafeteriaDto implements Serializable,Comparable<String> {
     private String name;
     private String location;
-    private String Type;
+    private String type;
     private Double price;
     private String franchiseName;
     private String ownerName;
@@ -18,7 +18,7 @@ public class CafeteriaDto implements Serializable,Comparable<String> {
     public CafeteriaDto(String name, String location, String type, Double price, String ownerName, String franchiseName, String gstNo) {
         this.name = name;
         this.location = location;
-        Type = type;
+        this.type = type;
         this.price = price;
         this.ownerName = ownerName;
         this.franchiseName = franchiseName;
@@ -42,11 +42,11 @@ public class CafeteriaDto implements Serializable,Comparable<String> {
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public Double getPrice() {
@@ -86,7 +86,7 @@ public class CafeteriaDto implements Serializable,Comparable<String> {
         return "CafeteriaDto{" +
                 "name='" + name + '\'' +
                 ", location='" + location + '\'' +
-                ", Type='" + Type + '\'' +
+                ", type='" + type + '\'' +
                 ", price=" + price +
                 ", franchiseName='" + franchiseName + '\'' +
                 ", ownerName='" + ownerName + '\'' +
@@ -98,12 +98,12 @@ public class CafeteriaDto implements Serializable,Comparable<String> {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         CafeteriaDto that = (CafeteriaDto) o;
-        return Objects.equals(name, that.name) && Objects.equals(location, that.location) && Objects.equals(Type, that.Type) && Objects.equals(price, that.price) && Objects.equals(franchiseName, that.franchiseName) && Objects.equals(ownerName, that.ownerName) && Objects.equals(gstNo, that.gstNo);
+        return Objects.equals(name, that.name) && Objects.equals(location, that.location) && Objects.equals(type, that.type) && Objects.equals(price, that.price) && Objects.equals(franchiseName, that.franchiseName) && Objects.equals(ownerName, that.ownerName) && Objects.equals(gstNo, that.gstNo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, location, Type, price, franchiseName, ownerName, gstNo);
+        return Objects.hash(name, location, type, price, franchiseName, ownerName, gstNo);
     }
 
 

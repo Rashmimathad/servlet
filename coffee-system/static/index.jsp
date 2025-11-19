@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-warning p-2 text-white bg-opacity-75">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Coffee</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,5 +36,10 @@
         </div>
     </div>
 </nav>
+<div class="container text-center mt-5">
+    <img src="images/image.jpg" class="img-fluid" alt="home-image">
+    <h1 class="mb-2">Welcomee to Coffee App!!!!</h1>
+    <p class="lead">Choose a form in navbar to continue</p>
+</div>
 </body>
 </html>
