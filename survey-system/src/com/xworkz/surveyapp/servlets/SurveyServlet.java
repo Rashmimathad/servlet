@@ -87,6 +87,7 @@ public class SurveyServlet extends HttpServlet {
         String crop = req.getParameter("inputCrop");
 
 
+
       try {
           SurveyDto surveyDto = new SurveyDto(name, age, dateOfBirth, height, weight, education, occupation, nativePlace, motherTongue, caste, religion, complexion, bloodGroup
                   , isDisabled, knownDiseases, fatherName, motherName, isMarried, wifeOrHusbandName, noOfChildren, noOfFamilyMembers, friendName, petName, mobileNumber, aadhaarNumber,
