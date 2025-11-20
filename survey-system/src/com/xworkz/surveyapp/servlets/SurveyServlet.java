@@ -94,6 +94,8 @@ public class SurveyServlet extends HttpServlet {
                   , totalSites, rtcNumber, buildingOwnerName, noOfCows, income, bankAccountType, shareHolding, insuranceCompany, insuranceNumber, loanNumber, loanBalance, loanType, electricityBillNumber,
                   waterBillNumber, taxesPaid, crop);
           surveyService.validateAndSave(surveyDto);
+
+
           req.setAttribute("name",name);
           req.setAttribute("age", age);
           req.setAttribute("dateOfBirth",dateOfBirth);
