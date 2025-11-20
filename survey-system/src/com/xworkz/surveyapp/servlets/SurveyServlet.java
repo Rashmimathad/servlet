@@ -16,6 +16,7 @@ public class SurveyServlet extends HttpServlet {
     private final SurveyService surveyService = new SurveyServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         //personalDetails
         String name = req.getParameter("inputName");
         Integer age = Integer.parseInt(req.getParameter("inputAge"));
@@ -87,6 +88,12 @@ public class SurveyServlet extends HttpServlet {
 
 
       try {
+          SurveyDto surveyDto = new SurveyDto(name, age, dateOfBirth, height, weight, education, occupation, nativePlace, motherTongue, caste, religion, complexion, bloodGroup
+                  , isDisabled, knownDiseases, fatherName, motherName, isMarried, wifeOrHusbandName, noOfChildren, noOfFamilyMembers, friendName, petName, mobileNumber, aadhaarNumber,
+                  panCardNumber, voterIdNumber, passportNumber, rationCardNumber, bikeNumber, carNumber, noOfCycles, shoeSize, noOfShoes, laptopModel, tvModel, goldInGms, silverInGms, landInAcres
+                  , totalSites, rtcNumber, buildingOwnerName, noOfCows, income, bankAccountType, shareHolding, insuranceCompany, insuranceNumber, loanNumber, loanBalance, loanType, electricityBillNumber,
+                  waterBillNumber, taxesPaid, crop);
+          surveyService.validateAndSave(surveyDto);
           req.setAttribute("name",name);
           req.setAttribute("age", age);
           req.setAttribute("dateOfBirth",dateOfBirth);
@@ -147,17 +154,8 @@ public class SurveyServlet extends HttpServlet {
           req.setAttribute("waterBillNumber",waterBillNumber);
           req.setAttribute("taxesPaid",taxesPaid);
           req.setAttribute("crop",crop);
-          SurveyDto surveyDto = new SurveyDto(name, age, dateOfBirth, height, weight, education, occupation, nativePlace, motherTongue, caste, religion, complexion, bloodGroup
-                  , isDisabled, knownDiseases, fatherName, motherName, isMarried, wifeOrHusbandName, noOfChildren, noOfFamilyMembers, friendName, petName, mobileNumber, aadhaarNumber,
-                  panCardNumber, voterIdNumber, passportNumber, rationCardNumber, bikeNumber, carNumber, noOfCycles, shoeSize, noOfShoes, laptopModel, tvModel, goldInGms, silverInGms, landInAcres
-                  , totalSites, rtcNumber, buildingOwnerName, noOfCows, income, bankAccountType, shareHolding, insuranceCompany, insuranceNumber, loanNumber, loanBalance, loanType, electricityBillNumber,
-                  waterBillNumber, taxesPaid, crop);
-          surveyService.validateAndSave(surveyDto);
+
           req.setAttribute("successMessage","Data Saved Successfully!!!!");
-
-
-
-
       }catch (DataInvalidException e){
           req.setAttribute("errorMessage","Data not Saved Successfully!!!!");
       }
