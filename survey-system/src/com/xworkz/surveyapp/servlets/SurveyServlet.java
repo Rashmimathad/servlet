@@ -167,5 +167,13 @@ public class SurveyServlet extends HttpServlet {
         req.getRequestDispatcher("SurveyResult.jsp").forward(req,resp);
 
     }
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("SurveyForm.jsp").forward(req,resp);
+    }
+
+
 }
 

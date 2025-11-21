@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand " href="index.jsp"><b>Home</b></a>
+        <a class="navbar-brand " href="index"><b>Home</b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active " href="SurveyForm.jsp"><b>Survey Form</b></a></li>
+                <li class="nav-item"><a class="nav-link active" href="surveyDetails"><b>Survey Form</b></a></li>
             </ul>
         </div>
     </div>
@@ -32,7 +32,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <a href="SurveyForm.jsp" class="btn btn-outline-primary w-100 mb-3">Survey Form</a>
+                <a href="surveyDetails" class="btn btn-outline-primary w-100 mb-3">Survey Form</a>
 
             </div>
         </div>

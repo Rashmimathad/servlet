@@ -11,7 +11,7 @@
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.jsp"><b>Home</b></a>
+                <a class="navbar-brand" href="index"><b>Home</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item "><a class="nav-link active" href="SurveyForm.jsp"><b>Survey Form</b></a></li>
+                        <li class="nav-item "><a class="nav-link active" href="surveyDetails"><b>Survey Form</b></a></li>
                     </ul>
                 </div>
             </div>
