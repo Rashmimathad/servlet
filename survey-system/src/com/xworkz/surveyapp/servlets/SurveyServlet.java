@@ -4,6 +4,7 @@ import com.xworkz.surveyapp.dto.SurveyDto;
 import com.xworkz.surveyapp.exceptions.DataInvalidException;
 import com.xworkz.surveyapp.service.SurveyService;
 import com.xworkz.surveyapp.service.impl.SurveyServiceImpl;
+import com.xworkz.surveyapp.utility.NumberCheckValidation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +20,10 @@ public class SurveyServlet extends HttpServlet {
 
         //personalDetails
         String name = req.getParameter("inputName");
-        Integer age = Integer.parseInt(req.getParameter("inputAge"));
+        Integer age = NumberCheckValidation.parseIntSafe(req.getParameter("inputAge"));
         String dateOfBirth = req.getParameter("inputDob");
-        Integer height = Integer.parseInt(req.getParameter("inputHeight"));
-        Double weight = Double.parseDouble(req.getParameter("inputWeight"));
+        Integer height = NumberCheckValidation.parseIntSafe(req.getParameter("inputHeight"));
+        Double weight = NumberCheckValidation.parseDoubleSafe(req.getParameter("inputWeight"));
         String education = req.getParameter("inputEducation");
         String occupation = req.getParameter("inputOccupation");
         String nativePlace = req.getParameter("inputNativePlace");
@@ -39,14 +40,14 @@ public class SurveyServlet extends HttpServlet {
         String motherName = req.getParameter("inputMotherName");
         String isMarried = req.getParameter("inputMarried");
         String wifeOrHusbandName = req.getParameter("inputWifeOrHusbandName");
-        Integer noOfChildren = Integer.parseInt(req.getParameter("inputNoOfChildren"));
-        Integer noOfFamilyMembers = Integer.parseInt(req.getParameter("inputNoOfFamilyMembers"));
+        Integer noOfChildren = NumberCheckValidation.parseIntSafe(req.getParameter("inputNoOfChildren"));
+        Integer noOfFamilyMembers = NumberCheckValidation.parseIntSafe(req.getParameter("inputNoOfFamilyMembers"));
         String friendName = req.getParameter("inputFriendName");
         String petName = req.getParameter("inputPetName");
 
         //Identity & Contact Details
-        Long mobileNumber = Long.parseLong(req.getParameter("inputMobileNumber"));
-        Long aadhaarNumber = Long.parseLong(req.getParameter("inputAadhaarNo"));
+        Long mobileNumber = NumberCheckValidation.parseLongSafe(req.getParameter("inputMobileNumber"));
+        Long aadhaarNumber = NumberCheckValidation.parseLongSafe(req.getParameter("inputAadhaarNo"));
         String panCardNumber = req.getParameter("inputPanCardNo");
         String voterIdNumber = req.getParameter("inputVoterIdNo");
         String passportNumber = req.getParameter("inputPassportNo");
@@ -55,35 +56,35 @@ public class SurveyServlet extends HttpServlet {
         //Assets & Property
         String bikeNumber = req.getParameter("inputBikeNumber");
         String carNumber = req.getParameter("inputCarNumber");
-        Integer noOfCycles = Integer.parseInt(req.getParameter("inputNoOfCycles"));
-        Integer shoeSize = Integer.parseInt(req.getParameter("inputShoeSize"));
-        Integer noOfShoes = Integer.parseInt(req.getParameter("inputNoOfShoePairs"));
+        Integer noOfCycles = NumberCheckValidation.parseIntSafe(req.getParameter("inputNoOfCycles"));
+        Integer shoeSize = NumberCheckValidation.parseIntSafe(req.getParameter("inputShoeSize"));
+        Integer noOfShoes = NumberCheckValidation.parseIntSafe(req.getParameter("inputNoOfShoePairs"));
         String laptopModel = req.getParameter("inputLaptopModel");
         String tvModel = req.getParameter("inputTvModel");
-        Integer goldInGms = Integer.parseInt(req.getParameter("inputGold"));
-        Integer silverInGms = Integer.parseInt(req.getParameter("inputSilver"));
-        Double landInAcres = Double.parseDouble(req.getParameter("inputLand"));
-        Integer totalSites = Integer.parseInt(req.getParameter("inputTotalSites"));
+        Integer goldInGms = NumberCheckValidation.parseIntSafe(req.getParameter("inputGold"));
+        Integer silverInGms = NumberCheckValidation.parseIntSafe(req.getParameter("inputSilver"));
+        Double landInAcres = NumberCheckValidation.parseDoubleSafe(req.getParameter("inputLand"));
+        Integer totalSites = NumberCheckValidation.parseIntSafe(req.getParameter("inputTotalSites"));
         String rtcNumber = req.getParameter("inputRtcNo");
         String buildingOwnerName = req.getParameter("inputBuildingOwnerName");
-        Integer noOfCows = Integer.parseInt(req.getParameter("inputNoOfCows"));
+        Integer noOfCows = NumberCheckValidation.parseIntSafe(req.getParameter("inputNoOfCows"));
 
 
         //Finance & Insurance
-        Integer income = Integer.parseInt(req.getParameter("inputIncome"));
+        Integer income = NumberCheckValidation.parseIntSafe(req.getParameter("inputIncome"));
         String bankAccountType = req.getParameter("inputAccountType");
-        Integer shareHolding = Integer.parseInt(req.getParameter("inputNoOfShares"));
+        Integer shareHolding = NumberCheckValidation.parseIntSafe(req.getParameter("inputNoOfShares"));
         String insuranceCompany = req.getParameter("inputInsuranceCompany");
         String insuranceNumber = req.getParameter("inputInsuranceNumber");
         String loanNumber = req.getParameter("inputLoanNumber");
-        Double loanBalance = Double.parseDouble(req.getParameter("inputLoanBalance"));
+        Double loanBalance = NumberCheckValidation.parseDoubleSafe(req.getParameter("inputLoanBalance"));
         String loanType = req.getParameter("inputLoanType");
 
 
         //Utilities & Miscellaneous
         String electricityBillNumber = req.getParameter("inputElectricityBillNo");
         String waterBillNumber = req.getParameter("inputWaterBillNo");
-        Double taxesPaid = Double.parseDouble(req.getParameter("inputTaxesPaid"));
+        Double taxesPaid = NumberCheckValidation.parseDoubleSafe(req.getParameter("inputTaxesPaid"));
         String crop = req.getParameter("inputCrop");
 
 

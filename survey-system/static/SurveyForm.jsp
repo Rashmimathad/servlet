@@ -29,14 +29,15 @@
 
             <h1 class="text-center text-primary mb-4"><b>Survey Form</b></h1>
             <form class="row g-4" action="surveyDetails" method="post">
-                <h3><b>Personal Information</b><hr></h3>
+                <h3><b>Personal Information</b></h3>
+                <hr>
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Name</label>
                     <input type="text" class="form-control" id="inputName" name="inputName" placeholder="enter your name">
                 </div>
                 <div class="col-md-3">
                     <label for="inputAge" class="form-label">Age</label>
-                    <input type="number" class="form-control" id="inputAge" name="inputAge" placeholder="enter age" required>
+                    <input type="number" class="form-control" id="inputAge" name="inputAge" placeholder="enter age">
                 </div>
                 <div class="col-md-3">
                     <label for="inputDob" class="form-label">Date Of Birth</label>
@@ -44,11 +45,11 @@
                 </div>
                 <div class="col-md-2">
                     <label for="inputHeight" class="form-label">Height <small>(in cm)</small></label>
-                    <input type="text" class="form-control" id="inputHeight" name="inputHeight" placeholder="enter height" required>
+                    <input type="text" class="form-control" id="inputHeight" name="inputHeight" placeholder="enter height">
                 </div>
                 <div class="col-md-2">
                     <label for="inputWeight" class="form-label">Weight <small>(in Kg)</small></label>
-                    <input type="text" class="form-control" id="inputWeight" name="inputWeight" placeholder="enter weight" required>
+                    <input type="text" class="form-control" id="inputWeight" name="inputWeight" placeholder="enter weight">
                 </div>
                 <div class="col-4">
                     <label for="inputEducation" class="form-label">Education <small>(highest qualification)</small></label>
@@ -106,7 +107,8 @@
                 </div>
 
                 <br><br>
-                <h3><b>Family & Social Details</b><hr></h3>
+                <h3><b>Family & Social Details</b></h3>
+                <hr>
                 <div class="col-md-4">
                     <label for="inputFatherName" class="form-label">Father Name</label>
                     <input type="text" class="form-control" id="inputFatherName" name="inputFatherName" placeholder="enter your father name">
@@ -129,11 +131,11 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputNoOfChildren" class="form-label">No of Children</label>
-                    <input type="number" class="form-control" id="inputNoOfChildren" name="inputNoOfChildren" placeholder="enter no of children" required>
+                    <input type="number" class="form-control" id="inputNoOfChildren" name="inputNoOfChildren" placeholder="enter no of children">
                 </div>
                 <div class="col-md-4">
                     <label for="inputNoOfFamilyMembers" class="form-label">No of Family Members</label>
-                    <input type="number" class="form-control" id="inputNoOfFamilyMembers" name="inputNoOfFamilyMembers" placeholder="no of family members" required>
+                    <input type="number" class="form-control" id="inputNoOfFamilyMembers" name="inputNoOfFamilyMembers" placeholder="no of family members">
                 </div>
                 <div class="col-4">
                     <label for="inputFriendName" class="form-label">Friend Name</label>
@@ -144,15 +146,15 @@
                     <input type="text" class="form-control" id="inputPetName" name="inputPetName" placeholder="enter pet name">
                 </div>
                 <br>
-                <h3><b>Identity & Contact Details</b><hr></h3>
-
+                <h3><b>Identity & Contact Details</b></h3>
+                <hr>
                 <div class="col-md-4">
                     <label for="inputMobileNumber" class="form-label">Mobile Number</label>
-                    <input type="number" class="form-control" id="inputMobileNumber" name="inputMobileNumber" placeholder="enter mobile no" required>
+                    <input type="number" class="form-control" id="inputMobileNumber" name="inputMobileNumber" placeholder="enter mobile no">
                 </div>
                 <div class="col-md-4">
                     <label for="inputAadhaarNo" class="form-label">Aadhaar Number</label>
-                    <input type="number" class="form-control" id="inputAadhaarNo" name="inputAadhaarNo" placeholder="enter your Aadhaar no" required>
+                    <input type="number" class="form-control" id="inputAadhaarNo" name="inputAadhaarNo" placeholder="enter your Aadhaar no">
                 </div>
                 <div class="col-md-4">
                     <label for="inputPanCardNo" class="form-label">PAN Card Number</label>
@@ -171,7 +173,7 @@
                     <input type="text" class="form-control" id="inputRationCardNo" name="inputRationCardNo" placeholder="enter ration card no">
                 </div>
                 <br>
-                <h3><b>Assets & Property</b><hr></h3>
+                <h3><b>Assets & Property</b></h3><hr>
                 <div class="col-md-4">
                     <label for="inputBikeNumber" class="form-label">Bike Number</label>
                     <input type="text" class="form-control" id="inputBikeNumber" name="inputBikeNumber" placeholder="enter bike number">
@@ -182,15 +184,15 @@
                 </div>
                 <div class="col-md-4">
                     <label for="inputNoOfCycles" class="form-label">Number Of Cycles</label>
-                    <input type="number" class="form-control" id="inputNoOfCycles" name="inputNoOfCycles" placeholder="enter no of cycles" required>
+                    <input type="number" class="form-control" id="inputNoOfCycles" name="inputNoOfCycles" placeholder="enter no of cycles">
                 </div>
                 <div class="col-md-2">
                     <label for="inputShoeSize" class="form-label">Shoe Size</label>
-                    <input type="number" class="form-control" id="inputShoeSize" name="inputShoeSize" placeholder="enter shoe size" required>
+                    <input type="number" class="form-control" id="inputShoeSize" name="inputShoeSize" placeholder="enter shoe size">
                 </div>
                 <div class="col-md-3">
                     <label for="inputNoOfShoePairs" class="form-label">Number Of Shoe Pairs</label>
-                    <input type="number" class="form-control" id="inputNoOfShoePairs" name="inputNoOfShoePairs" placeholder="enter number of shoes" required>
+                    <input type="number" class="form-control" id="inputNoOfShoePairs" name="inputNoOfShoePairs" placeholder="enter number of shoes">
                 </div>
                 <div class="col-md-4">
                     <label for="inputLaptopModel" class="form-label">Laptop Model</label>
@@ -202,11 +204,11 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputGold" class="form-label">Gold <small>( in gms)</small></label>
-                    <input type="number" class="form-control" id="inputGold" name="inputGold" placeholder="enter gold in gms" required>
+                    <input type="number" class="form-control" id="inputGold" name="inputGold" placeholder="enter gold in gms">
                 </div>
                 <div class="col-md-3">
                     <label for="inputSilver" class="form-label">Silver <small>( in gms)</small></label>
-                    <input type="number" class="form-control" id="inputSilver" name="inputSilver" placeholder="enter silver in gms" required>
+                    <input type="number" class="form-control" id="inputSilver" name="inputSilver" placeholder="enter silver in gms">
                 </div>
                 <div class="col-md-3">
                     <label for="inputLand" class="form-label">Land <small>( in Acres )</small></label>
@@ -214,7 +216,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputTotalSites" class="form-label">Total Sites</label>
-                    <input type="number" class="form-control" id="inputTotalSites" name="inputTotalSites" placeholder="enter total sites" required>
+                    <input type="number" class="form-control" id="inputTotalSites" name="inputTotalSites" placeholder="enter total sites">
                 </div>
                 <div class="col-md-4">
                     <label for="inputRtcNo" class="form-label">RTC No</label>
@@ -226,13 +228,13 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputNoOfCows" class="form-label">Number of Cows</label>
-                    <input type="number" class="form-control" id="inputNoOfCows" name="inputNoOfCows" placeholder="enter no of cows" required>
+                    <input type="number" class="form-control" id="inputNoOfCows" name="inputNoOfCows" placeholder="enter no of cows">
                 </div>
                 <br>
-                <h3><b>Finance & Insurance</b><hr></h3>
+                <h3><b>Finance & Insurance</b></h3><hr>
                 <div class="col-md-3">
                     <label for="inputIncome" class="form-label">Income</label>
-                    <input type="number" class="form-control" id="inputIncome" name="inputIncome" placeholder="enter income" required>
+                    <input type="number" class="form-control" id="inputIncome" name="inputIncome" placeholder="enter income">
                 </div>
                 <div class="col-md-3">
                     <label for="inputAccountType" class="form-label">Bank Account</label>
@@ -240,7 +242,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputNoOfShares" class="form-label">Share Holding</label>
-                    <input type="number" class="form-control" id="inputNoOfShares" name="inputNoOfShares" placeholder="enter no of shares" required>
+                    <input type="number" class="form-control" id="inputNoOfShares" name="inputNoOfShares" placeholder="enter no of shares">
                 </div>
                 <div class="col-md-3">
                     <label for="inputInsuranceCompany" class="form-label">Insurance Company</label>
@@ -256,14 +258,14 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputLoanBalance" class="form-label">Loan Balance</label>
-                    <input type="number" class="form-control" id="inputLoanBalance" name="inputLoanBalance" placeholder="enter loan balance" required>
+                    <input type="number" class="form-control" id="inputLoanBalance" name="inputLoanBalance" placeholder="enter loan balance">
                 </div>
                 <div class="col-md-3">
                     <label for="inputLoanType" class="form-label">Loan Type</label>
                     <input type="text" class="form-control" id="inputLoanType" name="inputLoanType" placeholder="enter loan type">
                 </div>
                 <br>
-                <h3><b>Utilities & Miscellaneous</b><hr></h3>
+                <h3><b>Utilities & Miscellaneous</b></h3><hr>
                 <div class="col-md-3">
                     <label for="inputElectricityBillNo" class="form-label">Electricity Bill Number</label>
                     <input type="text" class="form-control" id="inputElectricityBillNo" name="inputElectricityBillNo" placeholder="enter electricity bill no">
@@ -274,7 +276,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputTaxesPaid" class="form-label">Taxes Paid</label>
-                    <input type="number" class="form-control" id="inputTaxesPaid" name="inputTaxesPaid" placeholder="enter taxes paid" required>
+                    <input type="number" class="form-control" id="inputTaxesPaid" name="inputTaxesPaid" placeholder="enter taxes paid">
                 </div>
                 <div class="col-md-3">
                     <label for="inputCrop" class="form-label">Crop</label>
