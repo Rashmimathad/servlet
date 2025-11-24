@@ -1,6 +1,6 @@
 package com.xworkz.surveyapp.servlets;
 
-import com.xworkz.surveyapp.dto.SurveyDto;
+import com.xworkz.surveyapp.dto.*;
 import com.xworkz.surveyapp.exceptions.DataInvalidException;
 import com.xworkz.surveyapp.service.SurveyService;
 import com.xworkz.surveyapp.service.impl.SurveyServiceImpl;
@@ -90,11 +90,12 @@ public class SurveyServlet extends HttpServlet {
 
 
       try {
-          SurveyDto surveyDto = new SurveyDto(name, age, dateOfBirth, height, weight, education, occupation, nativePlace, motherTongue, caste, religion, complexion, bloodGroup
-                  , isDisabled, knownDiseases, fatherName, motherName, isMarried, wifeOrHusbandName, noOfChildren, noOfFamilyMembers, friendName, petName, mobileNumber, aadhaarNumber,
-                  panCardNumber, voterIdNumber, passportNumber, rationCardNumber, bikeNumber, carNumber, noOfCycles, shoeSize, noOfShoes, laptopModel, tvModel, goldInGms, silverInGms, landInAcres
-                  , totalSites, rtcNumber, buildingOwnerName, noOfCows, income, bankAccountType, shareHolding, insuranceCompany, insuranceNumber, loanNumber, loanBalance, loanType, electricityBillNumber,
-                  waterBillNumber, taxesPaid, crop);
+          SurveyDTO surveyDto = new SurveyDTO(new PersonalDetailsDTO(name,age,dateOfBirth,height,weight,education,occupation,nativePlace,motherTongue,caste,religion,complexion,bloodGroup,isDisabled,knownDiseases),
+                  new FamilyDTO(fatherName,motherName,isMarried,wifeOrHusbandName,noOfChildren,noOfFamilyMembers,friendName,petName),
+                  new ContactDTO(mobileNumber,panCardNumber,aadhaarNumber,voterIdNumber,passportNumber,rationCardNumber),
+                  new PropertyDTO(bikeNumber,carNumber,noOfCycles,shoeSize,noOfShoes,laptopModel,goldInGms,tvModel,silverInGms,landInAcres,totalSites,buildingOwnerName,rtcNumber,noOfCows),
+                  new FinanceDTO(income,bankAccountType,shareHolding,insuranceCompany,insuranceNumber,loanNumber,loanBalance,loanType),
+                  new UtilitiesDTO(electricityBillNumber,waterBillNumber,taxesPaid,crop));
           surveyService.validateAndSave(surveyDto);
 
 
