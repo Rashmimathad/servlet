@@ -159,7 +159,7 @@
   <!--                                                                      -->
   <!--   displaySourceFragment                                              -->
   <!--                       Should a source fragment be included in        -->
-  <!--                       exception messages? [true]                     -->
+  <!--                       com.xworkz.matrimonyapp.exception messages? [true]                     -->
   <!--                                                                      -->
   <!--   dumpSmap            Should the SMAP info for JSR45 debugging be    -->
   <!--                       dumped to a file? [false]                      -->
@@ -3798,7 +3798,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>svc</extension>
-        <mime-type>application/vnd.dvb.service</mime-type>
+        <mime-type>application/vnd.dvb.com.xworkz.matrimonyapp.service</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>svd</extension>

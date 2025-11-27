@@ -173,22 +173,33 @@ const maleRadio = document.getElementById("male").checked;
 if(maleRadio){
         const heightInput = document.getElementById("floatingInputHeightGroom").value;
         const height = parseFloat(heightInput);
-
-        if (isNaN(height) || height < 1 || height > 7) {
-            alert("Please enter a valid height between 1 and 7 ft.");
-            return false;
-        }
-        return true;
+        const message = req.getElementById("heightErrMsg");
+        if (isNaN(height)) {
+               message.textContent = "Please enter a valid number.";
+               message.style.color = "red";
+               return false;
+           } else if (height < 1 || height > 7) {
+               message.textContent = "Height should be between 1 ft and 7 ft.";
+               message.style.color = "red";
+               return false;
+           } else {
+               message.textContent = "Valid height.";
+               message.style.color = "green";
+               return true;
+           }
     }
     else{
     const heightInput = document.getElementById("floatingInputHeightBride").value;
             const height = parseFloat(heightInput);
+               const message = req.getElementById("heightErrMsg");
+              if (isNaN(height)) {
+                     alert("please enter a valid number")
+                     return false;
+                 } else if (height < 1 || height > 7) {
+                    alert("Height should be between 1 ft and 7 ft.");
+                     return false;
+                 }
 
-            if (isNaN(height) || height < 1 || height > 7) {
-                alert("Please enter a valid height between 1 and 7 ft.");
-                return false;
-            }
-            return true;
     }
 }
 
@@ -200,6 +211,6 @@ function validateForm() {
     if (!religionValidation()) return false;
     if (!maritalStatusValidation()) return false;
     if (!heightValidation()) return false;
-    return true; // all validations passed
+    return true;
 }
 

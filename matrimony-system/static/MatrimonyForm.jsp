@@ -26,7 +26,7 @@
     </div>
 </nav>
 
-<!-- Background Image -->
+
 <div class="position-fixed top-0 start-0 w-100 h-100">
     <img src="images/backgroundImage.jpeg"
          class="bg-image img-fluid opacity-25 w-100 h-100" style="object-fit: cover;" alt="background">
@@ -46,7 +46,7 @@
                 <div class="form-floating mb-3 p-2">
                     <input type="email" class="form-control border border-danger bg-danger bg-opacity-25"
                            id="floatingInputEmail" name="inputEmail"
-                           onchange="emailValidation()" required>
+                           onchange="emailValidation()">
                     <label class="fs-5 fw-bold text-danger" for="floatingInputEmail">Email address</label>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="form-floating mb-3 p-2">
                     <select class="form-select border border-danger bg-danger bg-opacity-25"
                             id="floatingSelectProfileFor" name="inputCreateProfileFor"
-                            onchange="profileCreateForValidation()" required>
+                            onchange="profileCreateForValidation()">
                         <option value="">--select--</option>
                         <option value="Son">Son</option>
                         <option value="Daughter">Daughter</option>
@@ -138,11 +138,12 @@
                     </div>
 
                     <div class="form-floating mb-3 p-2">
-                        <input type="text" class="form-control border border-danger bg-danger bg-opacity-25"
+                        <input type="number" class="form-control border border-danger bg-danger bg-opacity-25"
                                id="floatingInputHeightGroom" name="inputHeightGroom"
-                               onchange="heightValidation()">
+                               oninput="heightValidation()">
                         <label class="fs-5 fw-bold text-danger" for="floatingInputHeightGroom">
                             Height <small>(in ft)</small></label>
+                        <small id="heightErrMsgGroom" class="fs-6"></small>
                     </div>
                 </div>
 
@@ -198,11 +199,12 @@
                     </div>
 
                     <div class="form-floating mb-3 p-2">
-                        <input type="text" class="form-control border border-danger bg-danger bg-opacity-25"
+                        <input type="number" class="form-control border border-danger bg-danger bg-opacity-25"
                                id="floatingInputHeightBride" name="inputHeightBride"
-                               onchange="heightValidation()">
+                               oninput="heightValidation()">
                         <label class="fs-5 fw-bold text-danger" for="floatingInputHeightBride">
                             Height <small>(in ft)</small></label>
+                        <small id="heightErrMsgBride"></small>
                     </div>
                 </div>
 
