@@ -1,0 +1,42 @@
+package com.xworkz.tables.street;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class MainInsertStreet {
+    public static void main(String[] args) {
+        String url="jdbc:mysql://localhost:3306/servletschema";
+        String userName="root";
+        String password="Root@1102";
+        try{
+            Connection connection = DriverManager.getConnection(url,userName,password);
+            String sql = "insert into street values (1,'MG Road','Commercial','Bengaluru','Bengaluru Urban','Karnataka',120,'Metro Station',560001,45,'Good','High',12),(2,'Church Street','Commercial','Bengaluru','Bengaluru Urban','Karnataka',90,'Bookstore',560002,60,'Excellent','Medium',14),(3,'Lalbagh Road','Residential','Bengaluru','Bengaluru Urban','Karnataka',150,'Lalbagh Gate',560004,80,'Good','High',10)" +
+                    ",(4,'BTM Main Road','Mixed','Bengaluru','Bengaluru Urban','Karnataka',200,'Udupi Hotel',560076,80,'Good','High',18),(5,'Rajajinagar 1syt Block','Residential','Bengaluru','Bengaluru Urban','Karnataka',230,'Park',560010,20,'Excellent','Low',7),(6,'JP Nagar 3rd Phase','Residential','Bengaluru','Bengaluru Urban','Karnataka',180,'Temple',560078,18,'Good','Low',8)" +
+                    ",(7,'Brigade Road','Commercial','Bengaluru','Bengaluru Urban','Karnataka',110,'Mall Entrance',560025,70,'Excellent','High',19),(8,'Indiranagar 100ft Road','Commercial','Bengaluru','Bengaluru Urban','Karnataka',95,'Restaurant Hub',560038,85,'Excellent','High',21),(9,'Koramangala 5th Block','Mixed','Bengaluru','Bengaluru Urban','Karnataka',160,'Forum Mall',560095,75,'Good','High','22)" +
+                    ",(10,'Malleshwaram 8th Main','Residential','Bengaluru','Bengaluru Urban','Karnataka',210,'Ground',560003,22,'Good','Low',6),(11,'Shivaji Nagar Road','Commercial','Mumbai','Mumbai City','Maharashtra',170,'Bus Stand',400001,'Average','High',11),(12,'Colaba Causeway','Commercial','Mumbai','Mumbai City','Maharashtra',140,'Gateway Of India',400005,120,'Good','High',9)" +
+                    ",(13,'Marine Drive Road','Mixed','Mumbai','Mumbai CIty','Maharashtra',80,'Sea View',400002,35,'Excellent','Medium',4),(14,'Dadar IT Circle','Mixed','Mumbai','Mumbai City','Maharashtra',220,'Railway Station',400014,60,'Good','High',5),(15,'Andheri East Main Road','Commercial','Mumbai','Mumbai Suburban','Maharashtra',130,'Metro Station',400069,55,'Average','High',13)" +
+                    ",(16,'Salt Lake Sector','Commercial','Kolkata','North 24 Parganas','West Bengal',160,'Tech Park',70091,70,'Good','Medium',3),(17,'Park Street','Comercial','Kolkata','Kolkata','West Bengal',98,'St. Pauls Church',700016,110,'Excellent','High',2),(18,'Howrah Main Road','Mixed','Howarh','Howrah','West Bengal',200,'Howrah Bridge',711101,40,'Average','High',1)" +
+                    ",(19,'Ballygunge Circus','Residential','Kolkata','Kolkata','West Bengal',145,'School',700019,15,'Good','Low',6),(20,'New Town Street 12','Residential','Kolkata','Kolkata','West Bengal','180,'Park',700156,12,'Good','Low',8),(21,'Karol Bagh Lane','Commercial','Delhi','Central Delhi','Delhi',125,'Market',110005,95,'Average','High',15)" +
+                    ",(22,'Chandni Chowk Road','Commercial','Delhi','Old Delhi','Delhi',100,'Red Fort',110006,150,'Average','High',16),(23,'Hauz Khas Street','Mixed','Delhi','South Delhi','Delhi',140,'Cafe Street',110001,50,'Good','Medium',17),(24,'Connaught Place Circle','Commercial','Delhi','New Delhi','Delhi',10,'CP Center',110001,200,'Excellent','High',1)" +
+                    ",(25,'Rohini Sector 3 Road','Residential','Delhi','North West Delhi','Delhi',190,'Park',110085,18,'Good','Low',22),(26,'Gandhinagar Main Road','Mixed','Ahmedabad','Ahmedabad','Gujrat',220,'Temple',380008,30,'Good','Medium',19),(27,'Maninagar Street 7','Residential','Ahmedabad','Ahmedabad','Gujrat',150,'School',380008,10,'Good','Low',12)" +
+                    ",(28,'Navrangpura Road','Commercial','Ahmedabad','Ahmedabad','Gujrat',140,'Mall',380009,85,'Excellent','High',18),(29,'Law Garden Lane','Commercial','Ahmedabad','Ahmedabad','Gujrat',90,'Garden',380006,75,'Good','High','13),(30,'CG Road','Commercial','Ahmedabad','Ahmedabad','Gujrat',105,'Showrooms',380009,95,'Excellent','High',17)" +
+                    ",(31,'T Nagar Street','Commercial','Chennai','Chennai','Tamil Nadu',200,'Shopping Area',600017,140,'Good','High',8),(32,'OMR IT Corridor','Commercial','Chennai','Chennai','Tamil Nadu',175,'IT Park',600097,50,'Good','High',22),(33,'Anna Nagar 5th Avenue','Residential','Chennai','Chennai','Tamil Nadu',220,'Playground',600040,20,'Excellent','Low',12)" +
+                    ",(34,'Velachery Main Road','Mixed','Chennai','Chennai','Tamil Nadu',180,'Phoenix Mall',600042,60,'Good','Medium',18),(35,'Mylapore Street','Residential','Chennai','Chennai','Tamil Nadu',160,'Temple',600004,18,'Good','Low',10),(36,'Camp Road','Mixed','Pune','Pune','Maharashtra',160,'Bus STop',411048,40,'Average','Medium',9)" +
+                    ",(37,'Kothrud Depot Road','Residential','Pune','Pune','Maharashtra',200,'Depot',411038,20,'Good','Low',11),(38,'FC Road','Commercial','Pune','Pune','Maharashtra',110,'College',411004,95,'Excellent','High',4),(49,'JM Road','Commercial','Pune','Pune','Maharashtra',130,'Mall',411005,80,'Excellent','High',6)" +
+                    ",(40,'Baner Road','Mixed','Pune','Pune','Maharashtra',170,'Tech Park',411045,55,'Good','Medium',16),(41,'Ashok Nagar Street','Residential','Hyderabad','Hyderabad','Telangana',200,'Park',500020,15,'Good','Low',5),(42,'Banjara Hills Road','Commercial','Hyderabad','Hyderabad','Telangana',130,'Hospital',500034,70,'Excellent','High',9)" +
+                    ",(43,'Hitech City Road','Commercial','Hyderabad','Hyderabad','Telangana',160,'Cyber Towers',500081,85,'Excellent','High',11),(44,'Mehdipatnam Main Road','Mixed','Hyderabad','Hyderabad','Telangana',190,'Bus Depot',500028,40,'Good','Medium',13),(45,'Charminar Street','Commercial','Hyderabad','Hyderabad','Telangana',120,'Charminar',500002,150,'Average','High',14)" +
+                    ",(46,'Sector 15 Street','Residential','Gurugram','Gurugram','Haryana','160,122001,12,'Good','Low',17),(47,'DLF Phase 3 Road','Commercial','Gurugram','Gurugram','Haryana',140,'Cyber Hub',122002,'Excellent','High',18),(48,'Sohna Road','Mixed',Gurugram','Gurugram','Haryana',180,'Market',122001,45,'Good','Medium',20)" +
+                    ",(49,'MG Road Gurgaon','Commercial','Gurugram','Gurugram','Haryana',100,'Mall',122001,80,'Excellent','High',21),(50,'Palam Vihar Street','Residential','Gurugram','Gurugram','Haryana',150,'Park',122017,10,'Good','Low',12),(51,'Sector 62 Road','Commercial','Noida','Gautam Buddha Nagar','Uttar Pradesh',140,'IT Park',201301,65,'Good','High',3)" +
+                    ",(52,'Sector 18 Market Road','Commercial','Noida','Gautam Budhha Nagar','Uttar Pradesh',120,'Mall','201301,110,'Excellent','High',5),(53,'Indirapuram Street','Residential','Ghaziabad','Ghaziabad','Uttar Pradesh',200,'Temple',201014,20,'Good','Low',7),(54,'Aliganj Road','residential','Lucknow','Lucknow','Uttar Pradesh',210,'School',226024,18,'Good','Low',2)" +
+                    ",(55,'Hazratganj Road','Commercial','Lucknow','Lucknow','Uttar Pradesh',150,'Shopping Area',226001,95,'Excellent','High',1),(56,'Gomti Nagar Street','Residential','Lucknow','Lucknow','Uttar Pradesh',220,'Park',226010,22,'Good','Low',3),(57,'Nampally Road','Commercial','Hyderabad','Hyderabad','Telangana',170,'Railway Station',500001,85,'Average','High',9)" +
+                    ",(58,'RTC Cross Road','Mixed','Hyderabad','Hyderabad','Telangana',195,'Hospital',500020,60,'Good','Medium',8),(59,'Sindhi Colony Street','Residential','Hyderabad','Hyderabad','Telangana',145,'Tenple',500038,15,'Good','Low',4),(60,'Kukatpally Main Road','Mixed','Hyderabad','Hyderabad','Telangana',185,'Metro Station',500072,48,'Good','Medium',10)" +
+                    ",(61,'Vytilla Road','Mixed','Kochi','Ernakulam','Kerala',160,'Hub Junction',682019,50,'Good','High',6),(62,'Edappally Rooad','Commercial','Kochi','Ernakulam','Kerala',120,'Mall',682024,80,'Excellent','High',11),(63,'Aluva Town Road','Residential','Kochi','Ernakulam','Kerala',20,'Bus Stand',683101,18,'Good','Low',7)" +
+                    ",(64),(),()" +
+                    ",(),(),()" +
+                    ",(),(),();";
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
