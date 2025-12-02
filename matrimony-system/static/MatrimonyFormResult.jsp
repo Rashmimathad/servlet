@@ -24,25 +24,13 @@
                 <strong>Profile created for : ${createProfileFor}</strong><br>
                 <strong>Gender : ${gender}</strong><br><br>
 
-                        <div id="groomSection"  style="${gender == 'Male' ? '' : 'display:none'}">
-                        <strong>Groom Details</strong>
-                         <hr>
-                        <strong>Date of Birth: ${dob}</strong><br>
-                        <strong>Mother Tongue: ${motherTongue}</strong><br>
-                        <strong>Religion: ${religion}</strong><br>
-                        <strong>Marital Status: ${maritalStatus}</strong><br>
-                        <strong>Height: ${height}</strong><br>
-                        </div>
-
-                        <div id="brideSection"  style="${gender == 'Female' ? '' : 'display:none'}">
-                        <strong>Bride Details</strong>
+                      <strong>Details</strong>
                             <hr>
                         <strong>Date of Birth: ${dob}</strong><br>
                         <strong>Mother Tongue: ${motherTongue}</strong><br>
                         <strong>Religion: ${religion}</strong><br>
                         <strong>Marital Status: ${maritalStatus}</strong><br>
                         <strong>Height: ${height}</strong><br>
-                        </div>
 
             </p>
 
@@ -50,6 +38,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

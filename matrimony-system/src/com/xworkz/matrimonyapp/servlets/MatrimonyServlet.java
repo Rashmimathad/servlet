@@ -20,34 +20,23 @@ public class MatrimonyServlet extends HttpServlet {
         String email = req.getParameter("inputEmail");
         String createProfileFor = req.getParameter("inputCreateProfileFor");
         String gender = req.getParameter("inputGender");
-        String dob =req.getParameter("inputDobGroom");
-        String motherTongue =req.getParameter("inputMotherTongueGroom");
-        String religion = req.getParameter("inputReligionGroom");
-        String maritalStatus =req.getParameter("inputMaritalStatusGroom");
-        int height =NumberCheckValidation.parseIntSafe(req.getParameter("inputHeightGroom"));
-
-        req.setAttribute("email",email);
-        req.setAttribute("createProfileFor",createProfileFor);
-        req.setAttribute("gender",gender);
+        String dob =req.getParameter("inputDob");
+        String motherTongue =req.getParameter("inputMotherTongue");
+        String religion = req.getParameter("inputReligion");
+        String maritalStatus =req.getParameter("inputMaritalStatus");
+        int height =NumberCheckValidation.parseIntSafe(req.getParameter("inputHeight"));
         try {
-
-            if ("Male".equals(gender)) {
-                req.setAttribute("dob", req.getParameter("inputDobGroom"));
-                req.setAttribute("motherTongue", req.getParameter("inputMotherTongueGroom"));
-                req.setAttribute("religion", req.getParameter("inputReligionGroom"));
-                req.setAttribute("maritalStatus", req.getParameter("inputMaritalStatusGroom"));
-                req.setAttribute("height", NumberCheckValidation.parseDoubleSafe(req.getParameter("inputHeightGroom")));
-            } else {
-                req.setAttribute("dob", req.getParameter("inputDobBride"));
-                req.setAttribute("motherTongue", req.getParameter("inputMotherTongueBride"));
-                req.setAttribute("religion", req.getParameter("inputReligionBride"));
-                req.setAttribute("maritalStatus", req.getParameter("inputMaritalStatusBride"));
-                req.setAttribute("height", NumberCheckValidation.parseIntSafe(req.getParameter("inputHeightBride")));
-
-            }
-
             MatrimonyDto matrimonyDto = new MatrimonyDto(email, createProfileFor, gender, dob, motherTongue, religion, maritalStatus, height);
             matrimonyService.validateAndSave(matrimonyDto);
+            req.setAttribute("email",email);
+            req.setAttribute("createProfileFor",createProfileFor);
+            req.setAttribute("gender",gender);
+            req.setAttribute("dob", req.getParameter("inputDob"));
+            req.setAttribute("motherTongue", req.getParameter("inputMotherTongue"));
+            req.setAttribute("religion", req.getParameter("inputReligion"));
+            req.setAttribute("maritalStatus", req.getParameter("inputMaritalStatus"));
+            req.setAttribute("height", NumberCheckValidation.parseDoubleSafe(req.getParameter("inputHeight")));
+
             req.setAttribute("successMessage", "Data Saved Successfully!!!!");
         } catch (DataInvalidException e) {
             req.setAttribute("errorMessage","Data not Saved Saved Successfully!!!!");

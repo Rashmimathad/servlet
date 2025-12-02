@@ -1,9 +1,6 @@
 package com.xworkz.tables.street;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class MainUpdateStreet {
     public static void main(String[] args) {
@@ -15,7 +12,19 @@ public class MainUpdateStreet {
             String updateQueryById = "update street set no_of_houses_in_street=100 where street_id=2;";
             String updateQueryByStreetName = "update street set no_of_shops_in_street=80 where street_name='BTM Main Road';";
             String updateQueryById1 = "update street set pincode = 700091 where street_id=16";
-            String updateQueryByDistrict = "update street set district='Bengal' where pincode=700091;";
+            String updateQueryByDistrict = "update street set district='Bengaluru' where pincode=560001;";
+
+//            String updateQuery = "update street set no_of_houses_in_street=? where street_id=?;";
+//            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+//            preparedStatement.setInt(1,90);
+//            preparedStatement.setInt(2,9);
+//            int rows = preparedStatement.executeUpdate();
+//            System.out.println("Rows Updated : "+rows);
+//
+//            preparedStatement.setInt(1,100);
+//            preparedStatement.setInt(2,20);
+//            int rows1 = preparedStatement.executeUpdate();
+//            System.out.println("Rows1 updated : "+rows1);
             Statement statement = connection.createStatement();
             int rowsAffected = statement.executeUpdate(updateQueryById);
             int rowsAffected1 = statement.executeUpdate(updateQueryByStreetName);

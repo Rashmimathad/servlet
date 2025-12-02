@@ -56,6 +56,8 @@
                             id="floatingSelectProfileFor" name="inputCreateProfileFor"
                             onchange="profileCreateForValidation()">
                         <option value="">--select--</option>
+
+                        <option value="Myself">Myself</option>
                         <option value="Son">Son</option>
                         <option value="Daughter">Daughter</option>
                         <option value="Sister">Sister</option>
@@ -74,33 +76,33 @@
 
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="inputGender"
-                                       id="male" value="Male" onclick="toggleDetails()">
+                                       id="male" value="Male" onclick="showDivDetails()">
                                 <label class="form-check-label fs-5 fw-bold text-danger" for="male">Male</label>
                             </div>
 
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="inputGender"
-                                       id="female" value="Female" onclick="toggleDetails()">
+                                       id="female" value="Female" onclick="showDivDetails()">
                                 <label class="form-check-label fs-5 fw-bold text-danger" for="female">Female</label>
                             </div>
                         </div>
                     </fieldset>
                 </div>
 
-                <div class="d-none" id="groomDetails">
-                    <h3 class="fw-bold fs-4 text-danger">Groom's Details</h3>
+                <div id="details">
+                    <h3 class="fw-bold fs-4 text-danger"  id="detailsHeading">Details</h3>
                     <hr class="border border-danger border-2">
 
                     <div class="form-floating mb-3 p-2">
                         <input type="date" class="form-control border border-danger bg-danger bg-opacity-25"
-                               id="floatingInputDobGroom" name="inputDobGroom"
+                               id="floatingInputDobGroom" name="inputDob"
                                onchange="dateOfBirthValidation()">
                         <label class="fs-5 fw-bold text-danger" for="floatingInputDobGroom">Date of Birth</label>
                     </div>
 
                     <div class="form-floating mb-3 p-2">
                         <select class="form-select border border-danger bg-danger bg-opacity-25"
-                                id="floatingSelectMotherTongueGroom" name="inputMotherTongueGroom"
+                                id="floatingSelectMotherTongueGroom" name="inputMotherTongue"
                                 onchange="motherTongueValidation()">
                             <option value="">--select--</option>
                             <option value="Kannada">Kannada</option>
@@ -114,7 +116,7 @@
 
                     <div class="form-floating mb-3 p-2">
                         <select class="form-select border border-danger bg-danger bg-opacity-25"
-                                id="floatingSelectReligionGroom" name="inputReligionGroom"
+                                id="floatingSelectReligionGroom" name="inputReligion"
                                 onchange="religionValidation()">
                             <option value="">--select--</option>
                             <option value="Hindu">Hindu</option>
@@ -126,7 +128,7 @@
 
                     <div class="form-floating mb-3 p-2">
                         <select class="form-select border border-danger bg-danger bg-opacity-25"
-                                id="floatingMaritalStatusGroom" name="inputMaritalStatusGroom"
+                                id="floatingMaritalStatusGroom" name="inputMaritalStatus"
                                 onchange="maritalStatusValidation()">
                             <option value="">--select--</option>
                             <option value="Unmarried">Unmarried</option>
@@ -139,78 +141,16 @@
 
                     <div class="form-floating mb-3 p-2">
                         <input type="number" class="form-control border border-danger bg-danger bg-opacity-25"
-                               id="floatingInputHeightGroom" name="inputHeightGroom"
+                               id="floatingInputHeightGroom" name="inputHeight"
                                oninput="heightValidation()">
                         <label class="fs-5 fw-bold text-danger" for="floatingInputHeightGroom">
                             Height <small>(in ft)</small></label>
-                        <small id="heightErrMsgGroom" class="fs-6"></small>
+                        <small id="heightErrMsg" class="fs-6"></small>
                     </div>
-                </div>
-
-
-                <div class="d-none" id="brideDetails">
-                    <h3 class="fw-bold fs-4 text-danger">Bride's Details</h3>
-                    <hr class="border border-danger border-2">
-
-                    <div class="form-floating mb-3 p-2">
-                        <input type="date" class="form-control border border-danger bg-danger bg-opacity-25"
-                               id="floatingInputDobBride" name="inputDobBride"
-                               onchange="dateOfBirthValidation()">
-                        <label class="fs-5 fw-bold text-danger" for="floatingInputDobBride">Date of Birth</label>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-danger btn-lg px-5" type="submit">Submit Form</button>
+                        <button class="btn btn-danger btn-lg px-5" type="reset">Clear</button>
                     </div>
-
-                    <div class="form-floating mb-3 p-2">
-                        <select class="form-select border border-danger bg-danger bg-opacity-25"
-                                id="floatingSelectMotherTongueBride" name="inputMotherTongueBride"
-                                onchange="motherTongueValidation()">
-                            <option value="">--select--</option>
-                            <option value="Kannada">Kannada</option>
-                            <option value="Telugu">Telugu</option>
-                            <option value="Tamil">Tamil</option>
-                            <option value="Malayalam">Malayalam</option>
-                            <option value="Hindi">Hindi</option>
-                        </select>
-                        <label class="fs-5 fw-bold text-danger" for="floatingSelectMotherTongueBride">Mother Tongue</label>
-                    </div>
-
-                    <div class="form-floating mb-3 p-2">
-                        <select class="form-select border border-danger bg-danger bg-opacity-25"
-                                id="floatingSelectReligionBride" name="inputReligionBride"
-                                onchange="religionValidation()">
-                            <option value="">--select--</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Christian">Christian</option>
-                            <option value="Muslim">Muslim</option>
-                        </select>
-                        <label class="fs-5 fw-bold text-danger" for="floatingSelectReligionBride">Religion</label>
-                    </div>
-
-                    <div class="form-floating mb-3 p-2">
-                        <select class="form-select border border-danger bg-danger bg-opacity-25"
-                                id="floatingMaritalStatusBride" name="inputMaritalStatusBride"
-                                onchange="maritalStatusValidation()">
-                            <option value="">--select--</option>
-                            <option value="Unmarried">Unmarried</option>
-                            <option value="Divorced">Divorced</option>
-                            <option value="Widowed">Widowed</option>
-                            <option value="Awaiting Divorce">Awaiting Divorce</option>
-                        </select>
-                        <label class="fs-5 fw-bold text-danger" for="floatingMaritalStatusBride">Marital Status</label>
-                    </div>
-
-                    <div class="form-floating mb-3 p-2">
-                        <input type="number" class="form-control border border-danger bg-danger bg-opacity-25"
-                               id="floatingInputHeightBride" name="inputHeightBride"
-                               oninput="heightValidation()">
-                        <label class="fs-5 fw-bold text-danger" for="floatingInputHeightBride">
-                            Height <small>(in ft)</small></label>
-                        <small id="heightErrMsgBride"></small>
-                    </div>
-                </div>
-
-                <div class="text-center mt-3">
-                    <button class="btn btn-danger btn-lg px-5" type="submit">Submit Form</button>
-                    <button class="btn btn-danger btn-lg px-5" type="reset">Clear</button>
                 </div>
 
             </form>
@@ -218,8 +158,7 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="script.js"></script>
-
 </body>
 </html>

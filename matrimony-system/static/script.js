@@ -1,24 +1,18 @@
-function toggleDetails() {
-    const maleRadio = document.getElementById("male").checked;
-    const femaleRadio = document.getElementById("female").checked;
-    if (!maleRadio && !femaleRadio) {
-        alert("Please select Gender.");
-        return false;
+function showDivDetails() {
+    const male = document.getElementById("male").checked;
+    const female = document.getElementById("female").checked;
+
+    let detailsDiv = document.getElementById("details");
+    let heading = document.getElementById("detailsHeading");
+
+    if (male) {
+        detailsDiv.style.display = "block";
+        heading.innerText = "Groom's Details";
     }
-
-    const groom = document.getElementById("groomDetails");
-    const bride = document.getElementById("brideDetails");
-
-    groom.classList.add("d-none");
-    bride.classList.add("d-none");
-
-       if (maleRadio) {
-           groom.classList.remove("d-none");
-       }
-       if (femaleRadio) {
-           bride.classList.remove("d-none");
-       }
-        return true;
+    else if (female) {
+        detailsDiv.style.display = "block";
+        heading.innerText = "Bride's Details";
+    }
 }
 
 function emailValidation(){
