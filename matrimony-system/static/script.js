@@ -1,18 +1,15 @@
 function showDivDetails() {
-    const male = document.getElementById("male").checked;
-    const female = document.getElementById("female").checked;
+     const gender = document.querySelector("input[name='inputGender']:checked");
+        const genderMsg = document.getElementById("detailsHeading");
 
-    let detailsDiv = document.getElementById("details");
-    let heading = document.getElementById("detailsHeading");
 
-    if (male) {
-        detailsDiv.style.display = "block";
-        heading.innerText = "Groom's Details";
-    }
-    else if (female) {
-        detailsDiv.style.display = "block";
-        heading.innerText = "Bride's Details";
-    }
+        if( gender.value === "Male"){
+            genderMsg.textContent = "Groom details:";
+        }
+        else if (gender.value==="Female"){
+          genderMsg.textContent = "Bride details:";
+        }
+        document.getElementById("otherDetails").style.display = "block";
 }
 
 function emailValidation(){

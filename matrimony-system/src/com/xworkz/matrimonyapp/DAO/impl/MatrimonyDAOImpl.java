@@ -14,10 +14,16 @@ public class MatrimonyDAOImpl implements MatrimonyDAO {
     @Override
     public void save(MatrimonyDto matrimonyDto) {
         String insertQuery = "insert into matrimony(email, createProfileFor, gender, dateOfBirth, motherTongue, religion, maritalStatus, height) values(?,?,?,?,?,?,?,?)";
-        try{
+
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try( Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
+             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);){
+
+
             preparedStatement.setString(1,matrimonyDto.getEmail());
             preparedStatement.setString(2,matrimonyDto.getCreateProfileFor());
             preparedStatement.setString(3,matrimonyDto.getGender());

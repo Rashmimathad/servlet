@@ -88,11 +88,9 @@
                         </div>
                     </fieldset>
                 </div>
-
-                <div id="details">
-                    <h3 class="fw-bold fs-4 text-danger"  id="detailsHeading">Details</h3>
-                    <hr class="border border-danger border-2">
-
+                <h3 class="fw-bold fs-4 text-danger"  id="detailsHeading" style="display:none;"></h3>
+                <hr class="border border-danger border-2">
+                <div id="otherDetails" style="display:none;">
                     <div class="form-floating mb-3 p-2">
                         <input type="date" class="form-control border border-danger bg-danger bg-opacity-25"
                                id="floatingInputDobGroom" name="inputDob"

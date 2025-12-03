@@ -24,8 +24,7 @@ public class MainUpdatePresident {
             System.out.println("Rows Affected by updateByFullName : "+rowsAffected2);
             System.out.println("Rows Affected by updateTermEndYearById : "+rowsAffected3);
 
-
-            } catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
