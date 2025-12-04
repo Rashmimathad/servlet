@@ -11,6 +11,25 @@ public class FlipkartServiceImpl implements FlipkartService {
     @Override
     public void validateAndSave(FlipkartUserDTO flipkartUserDTO) throws DataInvalidException {
         boolean isUserValidated=false;
-
+        if (flipkartUserDTO.getFullName()==null||flipkartUserDTO.getFullName().isEmpty()){
+            System.err.println("Invalid name");
+        }else if (flipkartUserDTO.getContactNumber()==0){
+            System.err.println("Invalid contact number");
+        } else if (flipkartUserDTO.getGender()==null||flipkartUserDTO.getGender().isEmpty()) {
+            System.err.println("Invalid Gender");
+        } else if (flipkartUserDTO.getAge()==0||flipkartUserDTO.getAge()<18) {
+            System.err.println("Invalid Age");
+        } else if (flipkartUserDTO.getAddress()==null||flipkartUserDTO.getAddress().isEmpty()) {
+            System.err.println("Invalid Address");
+        }else{
+            isUserValidated=true;
+        }
+        if (isUserValidated){
+            System.out.println("Data Saved Succesfully!!");
+            System.out.println("FlipkartUserDTO = "+flipkartUserDTO);
+            flipkartDAO.save(flipkartUserDTO);
+        }else {
+            throw new DataInvalidException("Data not validated!!!");
+        }
     }
 }

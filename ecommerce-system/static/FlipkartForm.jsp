@@ -35,40 +35,43 @@
                     <form action="flipkartForm" method="post" onsubmit="return formValidation()">
                         <div class="mb-3">
                             <label for="name" class="form-label fw-bolder fs-5">Full Name</label>
-                            <input type="text" class="form-control" id="name" onchange="nameValidation()" name="inputFullName" placeholder="enter your full name">
-                            <span class="error" id="nameError"></span><br>
+                            <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" name="inputFullName" placeholder="enter your full name">
+                            <span class="error text-danger" id="nameError"></span><br>
                         </div>
                         <div class="mb-3">
                             <label for="contact" class="form-label fw-bolder fs-5">Contact Number</label>
-                            <input type="text" class="form-control" id="contact" name="inputContactNumber" placeholder="enter contact number">
-                            <span class="error" id="contactError"></span><br>
+                            <input type="text" class="form-control" id="contact" name="inputContactNumber" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
+                            <span class="error text-danger" id="contactError"></span><br>
                         </div>
                         <div class="mb-3">
                             <p class="form-label fw-bolder fs-5">Gender</p>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" value="Male" id="male">
+                                <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()" name="gender" value="Male" id="male">
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" value="Female" id="female">
+                                <input class="form-check-input" type="radio" name="gender" onclick="validateGender();enableSubmit()" value="Female" id="female">
                                 <label class="form-check-label" for="female">
                                     Female
                                 </label>
                             </div>
+                            <span class="error text-danger" id="genderError"></span><br>
                         </div>
                         <div class="mb-3">
                             <label for="age" class="form-label fw-bolder fs-5">Age</label>
-                            <input type="number" class="form-control" id="age" name="inputAge" placeholder="enter your age">
+                            <input type="number" class="form-control" id="age" name="inputAge" onchange="validateAge();enableSubmit()" placeholder="enter your age">
+                            <span class="error text-danger" id="ageError"></span><br>
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label fw-bolder fs-5">Address</label>
-                            <textarea class="form-control" id="address"  name="inputAddress" rows="3" placeholder="enter your address"></textarea>
+                            <textarea class="form-control" id="address"  name="inputAddress" rows="3" onchange="validateAddress();enableSubmit()" placeholder="enter your address"></textarea>
+                            <span class="error text-danger" id="addressError"></span><br>
                         </div>
                         <br>
                         <div class="text-center mt-3">
-                            <button class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" disabled>Sign Up</button>
+                            <button class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" id="submitBtn"  disabled>Sign Up</button>
                         </div>
                     </form>
                 </div>
@@ -76,5 +79,7 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="script.js"></script>
 </body>
 </html>

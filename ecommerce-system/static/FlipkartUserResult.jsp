@@ -36,6 +36,7 @@
                 <strong>Age :</strong> ${age}<br>
                 <strong>Address : </strong>${address}<br>
             </p>
+            <a href="flipkartForm" class="btn btn-primary w-100 mb-3 fw-semibold fs-6">Flipkart SignUp Form</a>
         </div>
     </div>
 </div>
