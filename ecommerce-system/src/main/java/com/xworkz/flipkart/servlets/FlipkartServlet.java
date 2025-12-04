@@ -1,6 +1,8 @@
 package com.xworkz.flipkart.servlets;
 
 import com.xworkz.flipkart.DTO.FlipkartUserDTO;
+import com.xworkz.flipkart.exceptions.ContactNumberDuplicateException;
+import com.xworkz.flipkart.exceptions.DataInvalidException;
 import com.xworkz.flipkart.service.FlipkartService;
 import com.xworkz.flipkart.service.impl.FlipkartServiceImpl;
 import com.xworkz.flipkart.utility.NumberValidation;
@@ -13,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebServlet(urlPatterns = "/flipkartForm",loadOnStartup = 1)
 public class FlipkartServlet extends HttpServlet {
-    FlipkartService flipkartService = new FlipkartServiceImpl();
+    private final FlipkartService flipkartService = new FlipkartServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String fullName = req.getParameter("inputFullName");
@@ -24,17 +26,14 @@ public class FlipkartServlet extends HttpServlet {
         try{
             FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(fullName,contactNumber,gender,age,address);
             flipkartService.validateAndSave(flipkartUserDTO);
-
-            req.setAttribute("fullName",fullName);
-            req.setAttribute("contactNumber",contactNumber);
-            req.setAttribute("gender",gender);
-            req.setAttribute("age",age);
-            req.setAttribute("address",address);
+            req.setAttribute("dto",flipkartUserDTO);
             req.setAttribute("successMessage","Data Saved Successfully!!");
-            req.getRequestDispatcher("FlipkartUserResult.jsp").forward(req,resp);
-        } catch (Exception e) {
-           req.setAttribute("errorMessage","Data not saved successfully!!");
+
+        }catch (ContactNumberDuplicateException | DataInvalidException e) {
+            req.setAttribute("errorMessage",e.getMessage());
+            e.printStackTrace();
         }
+        req.getRequestDispatcher("FlipkartUserResult.jsp").forward(req,resp);
     }
 
     @Override

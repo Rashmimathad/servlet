@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SignUp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -34,19 +33,19 @@
                     <h2 class="card-title text-center">Sign Up</h2><br>
                     <form action="flipkartForm" method="post" onsubmit="return formValidation()">
                         <div class="mb-3">
-                            <label for="name" class="form-label fw-bolder fs-5">Full Name</label>
-                            <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" name="inputFullName" placeholder="enter your full name">
+                            <label for="name" class="form-label fw-bolder fs-5">Full Name <span style="color:red;">*</span></label>
+                            <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" onkeydown="console.log('jhvc')" name="inputFullName" placeholder="enter your full name">
                             <span class="error text-danger" id="nameError"></span><br>
                         </div>
                         <div class="mb-3">
-                            <label for="contact" class="form-label fw-bolder fs-5">Contact Number</label>
+                            <label for="contact" class="form-label fw-bolder fs-5">Contact Number <span style="color:red;">*</span></label>
                             <input type="text" class="form-control" id="contact" name="inputContactNumber" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
                             <span class="error text-danger" id="contactError"></span><br>
                         </div>
                         <div class="mb-3">
-                            <p class="form-label fw-bolder fs-5">Gender</p>
+                            <p class="form-label fw-bolder fs-5">Gender <span style="color:red;">*</span></p>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()" name="gender" value="Male" id="male">
+                                <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()"  name="gender" value="Male" id="male">
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
@@ -60,12 +59,12 @@
                             <span class="error text-danger" id="genderError"></span><br>
                         </div>
                         <div class="mb-3">
-                            <label for="age" class="form-label fw-bolder fs-5">Age</label>
+                            <label for="age" class="form-label fw-bolder fs-5">Age <span style="color:red;">*</span></label>
                             <input type="number" class="form-control" id="age" name="inputAge" onchange="validateAge();enableSubmit()" placeholder="enter your age">
                             <span class="error text-danger" id="ageError"></span><br>
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label fw-bolder fs-5">Address</label>
+                            <label for="address" class="form-label fw-bolder fs-5">Address <span style="color:red;">*</span></label>
                             <textarea class="form-control" id="address"  name="inputAddress" rows="3" onchange="validateAddress();enableSubmit()" placeholder="enter your address"></textarea>
                             <span class="error text-danger" id="addressError"></span><br>
                         </div>

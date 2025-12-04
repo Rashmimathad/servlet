@@ -3,6 +3,7 @@ package com.xworkz.flipkart.service.impl;
 import com.xworkz.flipkart.DAO.FlipkartDAO;
 import com.xworkz.flipkart.DAO.impl.FlipkartDAOImpl;
 import com.xworkz.flipkart.DTO.FlipkartUserDTO;
+import com.xworkz.flipkart.exceptions.ContactNumberDuplicateException;
 import com.xworkz.flipkart.exceptions.DataInvalidException;
 import com.xworkz.flipkart.service.FlipkartService;
 
@@ -25,9 +26,14 @@ public class FlipkartServiceImpl implements FlipkartService {
             isUserValidated=true;
         }
         if (isUserValidated){
-            System.out.println("Data Saved Succesfully!!");
-            System.out.println("FlipkartUserDTO = "+flipkartUserDTO);
-            flipkartDAO.save(flipkartUserDTO);
+            boolean checkContactNumber = flipkartDAO.contactNumberCheck(flipkartUserDTO.getContactNumber());
+            if (!checkContactNumber) {
+                flipkartDAO.save(flipkartUserDTO);
+                System.out.println("Data Saved Successfully!!");
+                System.out.println("FlipkartUserDTO = " + flipkartUserDTO);
+            }else
+                throw new ContactNumberDuplicateException("Contact Number already Exists");
+
         }else {
             throw new DataInvalidException("Data not validated!!!");
         }
