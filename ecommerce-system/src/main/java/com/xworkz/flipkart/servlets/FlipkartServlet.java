@@ -1,6 +1,6 @@
 package com.xworkz.flipkart.servlets;
 
-import com.xworkz.flipkart.DTO.FlipkartUserDTO;
+import com.xworkz.flipkart.dto.FlipkartUserDTO;
 import com.xworkz.flipkart.exceptions.ContactNumberDuplicateException;
 import com.xworkz.flipkart.exceptions.DataInvalidException;
 import com.xworkz.flipkart.service.FlipkartService;

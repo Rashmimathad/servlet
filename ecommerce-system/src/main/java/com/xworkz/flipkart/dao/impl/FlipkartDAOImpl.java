@@ -1,10 +1,12 @@
-package com.xworkz.flipkart.DAO.impl;
+package com.xworkz.flipkart.dao.impl;
 
-import com.xworkz.flipkart.DAO.FlipkartDAO;
-import com.xworkz.flipkart.DTO.FlipkartUserDTO;
+import com.xworkz.flipkart.dao.FlipkartDAO;
+import com.xworkz.flipkart.dto.FlipkartUserDTO;
 import com.xworkz.flipkart.constants.DBConstants;
-import com.xworkz.flipkart.exceptions.ContactNumberDuplicateException;
+import lombok.SneakyThrows;
+
 import java.sql.*;
+import java.util.Optional;
 
 public class FlipkartDAOImpl implements FlipkartDAO {
     @Override
@@ -34,7 +36,13 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     }
 
     @Override
+    @SneakyThrows
     public boolean contactNumberCheck(Long contactNumber) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         String checkContactNumber = "select 1 from flipkart_users where user_contact_number=?;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(checkContactNumber);){
@@ -43,9 +51,31 @@ public class FlipkartDAOImpl implements FlipkartDAO {
          if (resultSet.next()){
              return true;
          }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    @SneakyThrows
+    public Optional<FlipkartUserDTO> findByContactNo(Long contactNo) {
+
+        String searchByContact = "select * from flipkart_users where user_contact_number=?;";
+        try(Connection connection=DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
+        PreparedStatement preparedStatement = connection.prepareStatement(searchByContact);) {
+            preparedStatement.setLong(1,contactNo);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                int id = resultSet.getInt("user_id");
+                String fullName = resultSet.getString("user_name");
+                long contactNumber = resultSet.getLong("user_contact_number");
+                String gender = resultSet.getString("user_gender");
+                int age = resultSet.getInt("user_age");
+                String address = resultSet.getString("user_address");
+                FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,fullName,contactNumber,gender,age,address);
+                return Optional.of(flipkartUserDTO);
+
+            }
+        }
+        return Optional.empty();
     }
 }

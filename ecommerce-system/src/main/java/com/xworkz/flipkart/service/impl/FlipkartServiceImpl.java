@@ -1,8 +1,8 @@
 package com.xworkz.flipkart.service.impl;
 
-import com.xworkz.flipkart.DAO.FlipkartDAO;
-import com.xworkz.flipkart.DAO.impl.FlipkartDAOImpl;
-import com.xworkz.flipkart.DTO.FlipkartUserDTO;
+import com.xworkz.flipkart.dao.FlipkartDAO;
+import com.xworkz.flipkart.dao.impl.FlipkartDAOImpl;
+import com.xworkz.flipkart.dto.FlipkartUserDTO;
 import com.xworkz.flipkart.exceptions.ContactNumberDuplicateException;
 import com.xworkz.flipkart.exceptions.DataInvalidException;
 import com.xworkz.flipkart.service.FlipkartService;

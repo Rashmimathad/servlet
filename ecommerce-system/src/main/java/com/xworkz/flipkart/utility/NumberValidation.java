@@ -1,6 +1,9 @@
 package com.xworkz.flipkart.utility;
 
 public class NumberValidation {
+    private NumberValidation(){
+
+    }
     public static int parseIntSafe(String value){
         if (value==null || value.trim().isEmpty()){
             return 0;

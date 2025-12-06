@@ -1,4 +1,4 @@
-package com.xworkz.flipkart.DTO;
+package com.xworkz.flipkart.dto;
 
 import lombok.*;
 
@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Setter
 
 public class FlipkartUserDTO implements Serializable,Comparable<String> {
+    private int id;
     private String fullName;
     private long contactNumber;
     private String gender;

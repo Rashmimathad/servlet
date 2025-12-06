@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `flipkart_users`;
 CREATE TABLE `flipkart_users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) DEFAULT NULL,
-  `user_contact_number` varchar(45) DEFAULT NULL,
+  `user_contact_number` bigint DEFAULT NULL,
   `user_gender` varchar(45) DEFAULT NULL,
   `user_age` int DEFAULT NULL,
   `user_address` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -42,4 +42,4 @@ CREATE TABLE `flipkart_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-04 11:17:07
+-- Dump completed on 2025-12-05 10:16:11
