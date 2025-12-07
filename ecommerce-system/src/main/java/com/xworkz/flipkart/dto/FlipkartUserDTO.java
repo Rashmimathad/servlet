@@ -19,6 +19,14 @@ public class FlipkartUserDTO implements Serializable,Comparable<String> {
     private int age;
     private String address;
 
+    public FlipkartUserDTO(String fullName, long contactNumber, String gender, int age, String address) {
+        this.fullName=fullName;
+        this.contactNumber=contactNumber;
+        this.gender=gender;
+        this.age=age;
+        this.address=address;
+    }
+
     @Override
     public int compareTo(String o) {
         return this.getFullName().compareTo(o);

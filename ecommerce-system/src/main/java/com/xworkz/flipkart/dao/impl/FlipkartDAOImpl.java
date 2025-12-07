@@ -9,13 +9,16 @@ import java.sql.*;
 import java.util.Optional;
 
 public class FlipkartDAOImpl implements FlipkartDAO {
-    @Override
-    public void save(FlipkartUserDTO flipkartUserDTO) {
+    static{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+    }
+    @Override
+    public void save(FlipkartUserDTO flipkartUserDTO) {
 
         String insertQuery = "insert into flipkart_users(user_name,user_contact_number,user_gender,user_age,user_address) values (?,?,?,?,?);";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
@@ -38,11 +41,6 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     @Override
     @SneakyThrows
     public boolean contactNumberCheck(Long contactNumber) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         String checkContactNumber = "select 1 from flipkart_users where user_contact_number=?;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(checkContactNumber);){
@@ -58,8 +56,7 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     @Override
     @SneakyThrows
     public Optional<FlipkartUserDTO> findByContactNo(Long contactNo) {
-
-        String searchByContact = "select * from flipkart_users where user_contact_number=?;";
+        String searchByContact = "SELECT * from flipkart_users where user_contact_number=?;";
         try(Connection connection=DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(searchByContact);) {
             preparedStatement.setLong(1,contactNo);
@@ -72,8 +69,8 @@ public class FlipkartDAOImpl implements FlipkartDAO {
                 int age = resultSet.getInt("user_age");
                 String address = resultSet.getString("user_address");
                 FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,fullName,contactNumber,gender,age,address);
+                System.out.println("Is flipkart user DTO present : "+Optional.of(flipkartUserDTO).get());
                 return Optional.of(flipkartUserDTO);
-
             }
         }
         return Optional.empty();

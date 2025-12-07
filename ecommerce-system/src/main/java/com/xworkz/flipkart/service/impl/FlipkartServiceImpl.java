@@ -7,6 +7,8 @@ import com.xworkz.flipkart.exceptions.ContactNumberDuplicateException;
 import com.xworkz.flipkart.exceptions.DataInvalidException;
 import com.xworkz.flipkart.service.FlipkartService;
 
+import java.util.Optional;
+
 public class FlipkartServiceImpl implements FlipkartService {
     private final FlipkartDAO flipkartDAO = new FlipkartDAOImpl();
     @Override
@@ -37,5 +39,14 @@ public class FlipkartServiceImpl implements FlipkartService {
         }else {
             throw new DataInvalidException("Data not validated!!!");
         }
+    }
+
+    @Override
+    public Optional<FlipkartUserDTO> validateContactNumber(Long contactNo) {
+        if (contactNo<=0) {
+            System.err.println("Invalid contact number");
+            return Optional.empty();
+        }
+        return flipkartDAO.findByContactNo(contactNo);
     }
 }

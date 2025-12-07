@@ -19,6 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="flipkartForm">Flipkart SignUp Form</a></li>
+                <li class="nav-item"><a class="nav-link active fs-4 fw-bold" href="searchByContact">Search</a></li>
             </ul>
         </div>
     </div>
@@ -36,7 +37,7 @@
                 <strong>Age :</strong> ${dto.getAge()}<br>
                 <strong>Address : </strong>${dto.getAddress()}<br>
             </p>
-            <a href="flipkartForm" class="btn btn-primary w-100 mb-3 fw-semibold fs-6">Submit other Form</a>
+            <a href="index" class="btn btn-primary w-100 mb-3 fw-semibold fs-6">Back to home</a>
         </div>
     </div>
 </div>
