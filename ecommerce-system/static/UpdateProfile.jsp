@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SignUp</title>
+    <title>Update Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
@@ -31,28 +31,29 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body bg-body-tertiary">
-                    <h2 class="card-title text-center">Sign Up</h2><br>
-                    <form action="flipkartForm" method="post" onsubmit="return formValidation()">
+                    <h2 class="card-title text-center">Update your Profile</h2><br>
+                    editDetails
+                    <form action="editProfile" method="get" onsubmit="return formValidation()">
                         <div class="mb-3">
                             <label for="name" class="form-label fw-bolder fs-5">Full Name <span style="color:red;">*</span></label>
-                            <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" onkeydown="console.log('jhvc')" name="inputFullName" placeholder="enter your full name">
+                            <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" value="${editDetails.getFullName()}" name="inputFullName" placeholder="enter your full name">
                             <span class="error text-danger" id="nameError"></span><br>
                         </div>
                         <div class="mb-3">
                             <label for="contact" class="form-label fw-bolder fs-5">Contact Number <span style="color:red;">*</span></label>
-                            <input type="text" class="form-control" id="contact" name="inputContactNumber" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
+                            <input type="text" class="form-control" id="contact" name="inputContactNumber" disabled value="${editDetails.contactNumber}" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
                             <span class="error text-danger" id="contactError"></span><br>
                         </div>
                         <div class="mb-3">
                             <p class="form-label fw-bolder fs-5">Gender <span style="color:red;">*</span></p>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()"  name="gender" value="Male" id="male">
+                                <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()"  onkeydown="validateGender();enableSubmit()" name="gender" id="male" ${editDetails.gender == 'Male' ? 'checked' : '' } value="Male"/>
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" onclick="validateGender();enableSubmit()" value="Female" id="female">
+                                <input class="form-check-input" type="radio" name="gender" onclick="validateGender();enableSubmit()" onkeydown="validateGender();enableSubmit()" id="female" ${editDetails.gender == 'Female' ? 'checked' : ''} value="Female"/>
                                 <label class="form-check-label" for="female">
                                     Female
                                 </label>
@@ -61,17 +62,17 @@
                         </div>
                         <div class="mb-3">
                             <label for="age" class="form-label fw-bolder fs-5">Age <span style="color:red;">*</span></label>
-                            <input type="number" class="form-control" id="age" name="inputAge" onchange="validateAge();enableSubmit()" placeholder="enter your age">
+                            <input type="number" class="form-control" id="age" name="inputAge" value="${editDetails.age}" onchange="validateAge();enableSubmit()" placeholder="enter your age">
                             <span class="error text-danger" id="ageError"></span><br>
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label fw-bolder fs-5">Address <span style="color:red;">*</span></label>
-                            <textarea class="form-control" id="address"  name="inputAddress" rows="3" onchange="validateAddress();enableSubmit()" placeholder="enter your address"></textarea>
+                            <textarea class="form-control" id="address"  name="inputAddress" rows="3"  onchange="validateAddress();enableSubmit()" placeholder="enter your address">${editDetails.address}</textarea>
                             <span class="error text-danger" id="addressError"></span><br>
                         </div>
                         <br>
                         <div class="text-center mt-3">
-                            <button class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" id="submitBtn"  disabled>Sign Up</button>
+                            <button class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" id="submitBtn"  disabled>Update</button>
                         </div>
                     </form>
                 </div>

@@ -3,6 +3,7 @@ package com.xworkz.flipkart.service.impl;
 import com.xworkz.flipkart.dao.FlipkartDAO;
 import com.xworkz.flipkart.dao.impl.FlipkartDAOImpl;
 import com.xworkz.flipkart.dto.FlipkartUserDTO;
+import com.xworkz.flipkart.dto.SearchDTO;
 import com.xworkz.flipkart.exceptions.ContactNumberDuplicateException;
 import com.xworkz.flipkart.exceptions.DataInvalidException;
 import com.xworkz.flipkart.service.FlipkartService;
@@ -42,11 +43,12 @@ public class FlipkartServiceImpl implements FlipkartService {
     }
 
     @Override
-    public Optional<FlipkartUserDTO> validateContactNumber(Long contactNo) {
-        if (contactNo<=0) {
+    public Optional<FlipkartUserDTO> validateContactNumber(SearchDTO searchDTO) {
+        if (searchDTO.getContactNo()<=0) {
             System.err.println("Invalid contact number");
             return Optional.empty();
         }
-        return flipkartDAO.findByContactNo(contactNo);
+        System.out.println("Data validated");
+        return flipkartDAO.findByContactNo(searchDTO.getContactNo());
     }
 }

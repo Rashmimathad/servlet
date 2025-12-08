@@ -19,7 +19,6 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     }
     @Override
     public void save(FlipkartUserDTO flipkartUserDTO) {
-
         String insertQuery = "insert into flipkart_users(user_name,user_contact_number,user_gender,user_age,user_address) values (?,?,?,?,?);";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
             PreparedStatement preparedStatement= connection.prepareStatement(insertQuery);){
@@ -69,6 +68,7 @@ public class FlipkartDAOImpl implements FlipkartDAO {
                 int age = resultSet.getInt("user_age");
                 String address = resultSet.getString("user_address");
                 FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,fullName,contactNumber,gender,age,address);
+                System.out.println("User details found");
                 System.out.println("Is flipkart user DTO present : "+Optional.of(flipkartUserDTO).get());
                 return Optional.of(flipkartUserDTO);
             }

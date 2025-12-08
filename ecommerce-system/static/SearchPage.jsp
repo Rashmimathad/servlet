@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform">
 <head>
     <meta charset="UTF-8">
@@ -40,23 +41,27 @@
                             <span class="error text-danger" id="contactError"></span><br>
                         </div>
                         <div class="text-center mt-3">
-                            <button class="btn btn-primary btn-lg px-5 fw-bolder" id="searchBtn">Search</button>
+                            <input class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" name="submitType" value="Search" id="searchBtn">
+                            <input class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" name="submitType" value="Clear" id="clearBtn">
                         </div>
+                        <br>
                         <c:if test="${not empty errorMessage}">
-                            <p class="text-danger text-center fs-4 fw-semibold">${errorMessage}</p>
+                            <p class="text-danger text-center border border-danger fs-4 fw-semibold">${errorMessage}</p>
                         </c:if>
-                        <c:if test="${not empty dto}">
-                        <div class="card-body" id="searchDetails">
-                            <h5 class="card-title text-center"><u>User Details</u></h5>
-                            <p class="card-text">
-                                <strong>Name : </strong>${dto.fullName}<br>
-                                <strong>Contact Number :</strong> ${dto.contactNumber}<br>
-                                <strong>Gender : </strong>${dto.gender}<br>
-                                <strong>Age :</strong> ${dto.age}<br>
-                                <strong>Address : </strong>${dto.address}<br>
-                            </p>
-                            <a href="index.jsp" class="btn btn-primary w-100 mb-3 fw-semibold fs-6">Go to home</a>
-                        </div>
+                        <c:if test="${dto!=null}">
+                            <div class="card text-bg-light border-2 border-success mb-3 p-2">
+                                <h5 class="card-title text-center fw-bolder"><u>User Details</u></h5>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <strong>Name : </strong>${dto.getFullName()}<br>
+                                        <strong>Contact Number :</strong> ${dto.getContactNumber()}<br>
+                                        <strong>Gender : </strong>${dto.getGender()}<br>
+                                        <strong>Age :</strong> ${dto.getAge()}<br>
+                                        <strong>Address : </strong>${dto.getAddress()}<br>
+                                    </p>
+                                    <a href="index" class="btn btn-primary w-50 mb-3 fw-semibold fs-6">Go to home</a>
+                                    <a href="editProfile?contactNo=${dto.getContactNumber()}" class="btn btn-primary w-50 mb-3 fw-semibold fs-6">Edit</a>
+                                </div>
                         </c:if>
                     </form>
                 </div>
