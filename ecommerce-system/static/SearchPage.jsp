@@ -18,8 +18,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <li class="text-white p-2 fs-3 fw-bold">${name}</li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="flipkartForm">Flipkart SignUp Form</a></li>
-                <li class="nav-item"><a class="nav-link active fs-4 fw-bold" href="searchByContact">Search</a></li>
+                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByContact">Search</a></li>
             </ul>
         </div>
     </div>
@@ -45,6 +46,7 @@
                             <input class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" name="submitType" value="Clear" id="clearBtn">
                         </div>
                         <br>
+
                         <c:if test="${not empty errorMessage}">
                             <p class="text-danger text-center border border-danger fs-4 fw-semibold">${errorMessage}</p>
                         </c:if>

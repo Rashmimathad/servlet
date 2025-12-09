@@ -17,8 +17,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <li class="text-white p-2 fs-3 fw-bold">${name}</li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="flipkartForm">Flipkart SignUp Form</a></li>
-                <li class="nav-item"><a class="nav-link active fs-4 fw-bold" href="searchByContact">Search</a></li>
+                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByContact">Search</a></li>
             </ul>
         </div>
     </div>
@@ -32,7 +33,6 @@
             <div class="col-md-8">
                 <div class="card-body bg-body-tertiary">
                     <h2 class="card-title text-center">Update your Profile</h2><br>
-                    editDetails
                     <form action="editProfile" method="get" onsubmit="return formValidation()">
                         <div class="mb-3">
                             <label for="name" class="form-label fw-bolder fs-5">Full Name <span style="color:red;">*</span></label>
@@ -47,13 +47,13 @@
                         <div class="mb-3">
                             <p class="form-label fw-bolder fs-5">Gender <span style="color:red;">*</span></p>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()"  onkeydown="validateGender();enableSubmit()" name="gender" id="male" ${editDetails.gender == 'Male' ? 'checked' : '' } value="Male"/>
+                                <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()"  onkeydown="validateGender();enableSubmit()" name="gender"  value="Male" id="male" ${editDetails.gender == 'Male' ? 'checked' : '' }/>
                                 <label class="form-check-label" for="male">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" onclick="validateGender();enableSubmit()" onkeydown="validateGender();enableSubmit()" id="female" ${editDetails.gender == 'Female' ? 'checked' : ''} value="Female"/>
+                                <input class="form-check-input" type="radio" name="gender" onclick="validateGender();enableSubmit()" onkeydown="validateGender();enableSubmit()" value="Female" id="female" ${editDetails.gender == 'Female' ? 'checked' : ''} />
                                 <label class="form-check-label" for="female">
                                     Female
                                 </label>

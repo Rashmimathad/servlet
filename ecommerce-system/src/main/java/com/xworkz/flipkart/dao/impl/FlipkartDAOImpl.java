@@ -27,8 +27,6 @@ public class FlipkartDAOImpl implements FlipkartDAO {
             preparedStatement.setString(3,flipkartUserDTO.getGender());
             preparedStatement.setInt(4,flipkartUserDTO.getAge());
             preparedStatement.setString(5,flipkartUserDTO.getAddress());
-
-
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println("Rows Affected : "+rowsAffected);
         } catch (Exception e) {

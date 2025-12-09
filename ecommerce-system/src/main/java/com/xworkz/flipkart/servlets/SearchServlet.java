@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -24,12 +25,14 @@ public class SearchServlet extends HttpServlet {
             System.out.println("Data Cleared...");
             req.setAttribute("dto",null);
         }else {
+            HttpSession httpSession=req.getSession();
             String contactNo = req.getParameter("inputContactNumber");
             if (contactNo != null && !contactNo.isEmpty()) {
                 long contactNumber = NumberValidation.parseLongSafe(contactNo);
                 Optional<FlipkartUserDTO> searchDetails = flipkartService.validateContactNumber(new SearchDTO(contactNumber));
                 if (searchDetails.isPresent()) {
                     req.setAttribute("dto", searchDetails.get());
+                    httpSession.setAttribute("name",searchDetails.get().getFullName());
                 } else {
                     System.err.println("Contact number not found");
                     req.setAttribute("errorMessage", "Contact Number not found!!");
