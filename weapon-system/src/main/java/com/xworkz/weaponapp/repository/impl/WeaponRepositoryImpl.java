@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class WeaponRepositoryImpl implements WeaponRepository {
@@ -82,4 +85,32 @@ public class WeaponRepositoryImpl implements WeaponRepository {
         return Optional.empty();
     }
 
+    @Override
+    @SneakyThrows
+    public List<WeaponDTO> findWeaponByType(String weaponType) {
+        String searchByType = "select * from weapons where weapon_type=?;";
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
+        PreparedStatement preparedStatement = connection.prepareStatement(searchByType);){
+            preparedStatement.setString(1,weaponType);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<WeaponDTO> weaponsList = new ArrayList<>();
+            while(resultSet.next()){
+                int id = resultSet.getInt("weapon_id");
+                String weaponName = resultSet.getString("weapon_name");
+                String weaponTypeName = resultSet.getString("weapon_type");
+                String serialNumber = resultSet.getString("serial_number");
+                String weaponSpecification = resultSet.getString("weapon_specification");
+                double weaponPrice = resultSet.getDouble("weapon_price");
+
+                WeaponDTO weaponDTO = new WeaponDTO(id,weaponName,weaponTypeName,serialNumber,weaponSpecification,weaponPrice);
+                System.out.println(weaponDTO);
+                weaponsList.add(weaponDTO);
+            }
+            return weaponsList;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
 }

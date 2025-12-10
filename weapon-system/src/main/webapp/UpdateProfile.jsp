@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Update</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+    background-image: url('images/backgroundImage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(7px);
+}
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark border-bottom border-body" style="height: 60px;">
@@ -17,53 +26,54 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active text-white fs-3 fw-semibold" href="register">Register</a></li>
-                <li class="nav-item"><a class="nav-link active text-white fs-3 fw-semibold" href="search">Search</a></li>
+            <ul class="navbar-nav nav-pills ms-auto">
+                <li class="nav-item"><a class="nav-link active text-dark  fw-semibold m-1  bg-body-tertiary" href="register">Register</a></li>
+                <li class="nav-item"><a class="nav-link active text-dark  fw-semibold m-1 bg-body-tertiary" href="search">Search</a></li>
+                <li class="nav-item"><a class="nav-link active text-dark  fw-semibold m-1 bg-body-tertiary" href="searchByType">Search By Weapon Type</a></li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-    <div class="card p-2 bg-body-secondary bg-opacity-50 border border-dark border-2 rounded" style="width: 45rem;">
+    <div class="card p-2 bg-body-secondary bg-opacity-75 border border-dark border-2 rounded" style="width: 45rem;">
         <div class="card-body">
             <h3 class="card-title fs-1 text-center fw-semibold text-dark text-uppercase"><b>Weapon Update Form</b></h3>
             <br>
             <form action="editProfile" method="post">
                 <div class="mb-3">
                     <label for="weaponName" class="form-label fs-5 fw-bold">Weapon Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="weaponName" name="weaponName" value="${dto.weaponName}" disabled onblur="validateWeaponName();enableSubmit();" placeholder="Enter weapon name">
+                    <input type="text" class="form-control" id="weaponName" name="weaponName" value="${details.weaponName}" readonly onblur="validateWeaponName();enableSubmit();" placeholder="Enter weapon name">
                     <span id="nameError" class="text-danger fw-bold"></span>
                 </div>
                 <div class="col-md-12">
                     <label for="weaponType" class="form-label fs-5 fw-bold">Weapon Type <span class="text-danger">*</span></label>
                     <select id="weaponType" name="weaponType" class="form-select" onblur="validateWeaponType();enableSubmit();">
                         <option value="">Choose...</option>
-                        <option value="Shotgun" ${dto.weaponType == 'Shotgun' ? 'selected' : ''}>Shotgun</option>
-                        <option value="Rifle" ${dto.weaponType == 'Rifle' ? 'selected' : ''}>Rifle</option>
-                        <option value="Handgun" ${dto.weaponType == 'Handgun' ? 'selected' : ''}>Handgun</option>
-                        <option value="Pistol" ${dto.weaponType == 'Pistol' ? 'selected' : ''}>Pistol</option>
-                        <option value="Revolver" ${dto.weaponType == 'Revolver' ? 'selected' : ''}>Revolver</option>
-                        <option value="Sniper Rifle" ${dto.weaponType == 'Sniper Rifle' ? 'selected' : ''}>Sniper Rifle</option>
-                        <option value="Assault Rifle" ${dto.weaponType == 'Assault Rifle' ? 'selected' : ''}>Assault Rifle</option>
+                        <option value="Shotgun" ${details.weaponType == 'Shotgun' ? 'selected' : ''}>Shotgun</option>
+                        <option value="Rifle" ${details.weaponType == 'Rifle' ? 'selected' : ''}>Rifle</option>
+                        <option value="Handgun" ${details.weaponType == 'Handgun' ? 'selected' : ''}>Handgun</option>
+                        <option value="Pistol" ${details.weaponType == 'Pistol' ? 'selected' : ''}>Pistol</option>
+                        <option value="Revolver" ${details.weaponType == 'Revolver' ? 'selected' : ''}>Revolver</option>
+                        <option value="Sniper Rifle" ${details.weaponType == 'Sniper Rifle' ? 'selected' : ''}>Sniper Rifle</option>
+                        <option value="Assault Rifle" ${details.weaponType == 'Assault Rifle' ? 'selected' : ''}>Assault Rifle</option>
                     </select>
                     <span id="weaponTypeError" class="text-danger fw-bold"></span>
                 </div>
                 <br>
                 <div class="mb-3">
                     <label for="serialNumber" class="form-label fs-5 fw-bold">Serial Number <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="serialNumber" name="serialNumber" value="${dto.serialNumber}" onblur="validateSerialNumber();enableSubmit();" placeholder="Enter serial number">
+                    <input type="text" class="form-control" id="serialNumber" name="serialNumber" value="${details.serialNumber}" onblur="validateSerialNumber();enableSubmit();" placeholder="Enter serial number">
                     <span id="serialNumberError" class="text-danger fw-bold"></span>
                 </div>
                 <div class="mb-3">
                     <label for="specification" class="form-label fs-5 fw-bold">Specification <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="specification" name="specification" value="${dto.specification}" onblur="validateSpecification();enableSubmit();" placeholder="Enter specification of weapon">
+                    <input type="text" class="form-control" id="specification" name="specification" value="${details.specification}" onblur="validateSpecification();enableSubmit();" placeholder="Enter specification of weapon">
                     <span id="specificationError" class="text-danger fw-bold"></span>
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label fs-5 fw-bold">Price <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="price" name="price" value="${dto.price}" onblur="validatePrice();enableSubmit();" placeholder="Enter price">
+                    <input type="text" class="form-control" id="price" name="price" value="${details.price}" onblur="validatePrice();enableSubmit();" placeholder="Enter price">
                     <span id="priceError" class="text-danger fw-bold"></span>
                 </div>
                 <br>

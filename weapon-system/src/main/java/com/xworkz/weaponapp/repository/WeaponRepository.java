@@ -2,6 +2,8 @@ package com.xworkz.weaponapp.repository;
 
 import com.xworkz.weaponapp.dto.WeaponDTO;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public interface WeaponRepository {
@@ -12,5 +14,8 @@ public interface WeaponRepository {
     }
     default Optional<WeaponDTO> findByWeaponName(String weaponName){
         return Optional.empty();
+    }
+    default List<WeaponDTO> findWeaponByType(String weaponType){
+        return Collections.emptyList();
     }
 }

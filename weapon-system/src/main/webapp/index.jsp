@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+    background-image: url('images/backgroundImage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(7px);
+}
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" style="height: 60px;">
@@ -17,16 +26,17 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active text-white fs-3 fw-semibold" href="register">Register</a></li>
-                <li class="nav-item"><a class="nav-link active text-white fs-3 fw-semibold" href="search">Search</a></li>
+            <ul class="navbar-nav nav-pills ms-auto">
+                <li class="nav-item"><a class="nav-link active text-dark  fw-semibold m-1  bg-body-tertiary" href="register">Register</a></li>
+                <li class="nav-item"><a class="nav-link active text-dark  fw-semibold m-1 bg-body-tertiary" href="search">Search</a></li>
+                <li class="nav-item"><a class="nav-link active text-dark  fw-semibold m-1 bg-body-tertiary" href="searchByType">Search By Weapon Type</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-    <div class="card p-2 bg-body-secondary bg-opacity-50 border border-dark border-2 rounded" style="width: 35rem; height: 12rem;">
+    <div class="card p-2 bg-body-secondary bg-opacity-75 border border-dark border-2 rounded" style="width: 35rem; height: 12rem;">
         <div class="card-body text-center">
             <h3 class="card-title text-center p-5 fs-2 fw-bold">Welcome to Weapon App!!</h3>
         </div>

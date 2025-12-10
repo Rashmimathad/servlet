@@ -23,7 +23,8 @@ public class UpdateServlet extends HttpServlet {
         if (weaponName != null && !weaponName.isEmpty()) {
             Optional<WeaponDTO> editDetails = weaponService.validateName(new SearchDTO(weaponName));
             if (editDetails.isPresent()) {
-                req.setAttribute("dto", editDetails.get());
+                req.setAttribute("details", editDetails.get());
+
                 req.setAttribute("successMessage", "Weapon Data found!!");
             } else {
                 System.err.println("Weapon not found");

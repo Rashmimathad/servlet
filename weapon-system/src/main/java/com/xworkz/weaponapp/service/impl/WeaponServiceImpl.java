@@ -1,5 +1,6 @@
 package com.xworkz.weaponapp.service.impl;
 
+import com.xworkz.weaponapp.dto.SearchByTypeDTO;
 import com.xworkz.weaponapp.dto.SearchDTO;
 import com.xworkz.weaponapp.dto.WeaponDTO;
 import com.xworkz.weaponapp.exceptions.DataInvalidException;
@@ -8,9 +9,13 @@ import com.xworkz.weaponapp.repository.WeaponRepository;
 import com.xworkz.weaponapp.repository.impl.WeaponRepositoryImpl;
 import com.xworkz.weaponapp.service.WeaponService;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class WeaponServiceImpl implements WeaponService {
+
+
     private final WeaponRepository weaponRepository = new WeaponRepositoryImpl();
 
     @Override
@@ -54,4 +59,16 @@ public class WeaponServiceImpl implements WeaponService {
         System.out.println("name validated for search");
         return weaponRepository.findByWeaponName(searchDTO.getWeaponName());
     }
+
+    @Override
+    public List<WeaponDTO> validateWeaponType(SearchByTypeDTO searchByTypeDTO) {
+        if (searchByTypeDTO.getWeaponType()==null|| searchByTypeDTO.getWeaponType().isEmpty()){
+            System.err.println("Invalid weapon type");
+            return Collections.emptyList();
+        }
+
+        System.out.println("Weapon Type validated");
+        return weaponRepository.findWeaponByType(searchByTypeDTO.getWeaponType());
+    }
+
 }
