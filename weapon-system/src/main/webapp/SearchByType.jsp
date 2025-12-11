@@ -88,8 +88,8 @@
                                     <td>${weapon.serialNumber}</td>
                                     <td>${weapon.specification}</td>
                                     <td>${weapon.price}</td>
-                                    <td class="text-center"> <a href="editProfile?weaponName=${weapon.weaponName}" class="btn btn-dark fs-5">Edit</a></td>
-                                    <td class="text-center"> <a href="delete?weaponId=${weapon.weaponId}" class="btn btn-dark fs-5">Delete</a></td>
+                                    <td class="text-center"> <a href="editProfile?weaponName=${weapon.weaponName}" class="btn btn-dark fs-6">Edit</a></td>
+                                    <td class="text-center"> <a href="delete?weaponId=${weapon.weaponId}" class="btn btn-dark fs-6">Delete</a></td>
                                     </tr>
                                 </c:forEach>
                         </tbody>
