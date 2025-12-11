@@ -1,6 +1,7 @@
 package com.xworkz.weaponapp.repository.impl;
 
 import com.xworkz.weaponapp.constant.DBConstants;
+import com.xworkz.weaponapp.dto.DeleteDTO;
 import com.xworkz.weaponapp.dto.WeaponDTO;
 import com.xworkz.weaponapp.repository.WeaponRepository;
 import lombok.SneakyThrows;
@@ -40,6 +41,36 @@ public class WeaponRepositoryImpl implements WeaponRepository {
             System.out.println("Rows Affected : " + rowsAffected);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    @SneakyThrows
+    public void update(WeaponDTO weaponDTO) {
+        String updateQuery = "update weapons set weapon_type=?,serial_number=?,weapon_specification=?,weapon_price=? where weapon_name=?;";
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
+        PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);){
+            preparedStatement.setString(1, weaponDTO.getWeaponType());
+            preparedStatement.setString(2, weaponDTO.getSerialNumber());
+            preparedStatement.setString(3,weaponDTO.getSpecification());
+            preparedStatement.setDouble(4,weaponDTO.getPrice());
+            preparedStatement.setString(5,weaponDTO.getWeaponName());
+            System.out.println("Data Updated");
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Data Updated : "+rowsAffected);
+        }
+    }
+
+    @Override
+    @SneakyThrows
+    public void delete(DeleteDTO deleteDTO) {
+        String deleteByIdQuery = "delete from weapons where weapon_id=?;";
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteByIdQuery);){
+            preparedStatement.setInt(1,deleteDTO.getWeaponId());
+            System.out.println("Data deleted");
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Data deleted rows : "+rowsAffected);
         }
     }
 

@@ -42,7 +42,7 @@
             <form action="editProfile" method="post">
                 <div class="mb-3">
                     <label for="weaponName" class="form-label fs-5 fw-bold">Weapon Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="weaponName" name="weaponName" value="${details.weaponName}" readonly onblur="validateWeaponName();enableSubmit();" placeholder="Enter weapon name">
+                    <input type="text" class="form-control" id="weaponName" name="weaponName" value="${details.weaponName}" readonly="readonly" placeholder="Enter weapon name">
                     <span id="nameError" class="text-danger fw-bold"></span>
                 </div>
                 <div class="col-md-12">
@@ -52,8 +52,10 @@
                         <option value="Shotgun" ${details.weaponType == 'Shotgun' ? 'selected' : ''}>Shotgun</option>
                         <option value="Rifle" ${details.weaponType == 'Rifle' ? 'selected' : ''}>Rifle</option>
                         <option value="Handgun" ${details.weaponType == 'Handgun' ? 'selected' : ''}>Handgun</option>
+                        <option value="Carbine" ${details.weaponType == 'Carbine' ? 'selected' : ''}>Carbine</option>
                         <option value="Pistol" ${details.weaponType == 'Pistol' ? 'selected' : ''}>Pistol</option>
                         <option value="Revolver" ${details.weaponType == 'Revolver' ? 'selected' : ''}>Revolver</option>
+                        <option value="SMG" ${details.weaponType == 'SMG' ? 'selected' : ''}>SMG</option>
                         <option value="Sniper Rifle" ${details.weaponType == 'Sniper Rifle' ? 'selected' : ''}>Sniper Rifle</option>
                         <option value="Assault Rifle" ${details.weaponType == 'Assault Rifle' ? 'selected' : ''}>Assault Rifle</option>
                     </select>
@@ -82,6 +84,6 @@
         </div>
     </div>
 </div>
-<script src="script.js"></script>
+<script src="UpdateScript.js"></script>
 </body>
 </html>

@@ -53,8 +53,10 @@
                         <option value="Shotgun">Shotgun</option>
                         <option value="Rifle">Rifle</option>
                         <option value="Handgun">Handgun</option>
+                        <option value="Carbine">Carbine</option>
                         <option value="Pistol">Pistol</option>
                         <option value="Revolver">Revolver</option>
+                        <option value="SMG">SMG</option>
                         <option value="Sniper Rifle">Sniper Rifle</option>
                         <option value="Assault Rifle">Assault Rifle</option>
                     </select>

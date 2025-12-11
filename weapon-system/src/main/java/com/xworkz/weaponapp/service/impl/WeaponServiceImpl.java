@@ -1,5 +1,6 @@
 package com.xworkz.weaponapp.service.impl;
 
+import com.xworkz.weaponapp.dto.DeleteDTO;
 import com.xworkz.weaponapp.dto.SearchByTypeDTO;
 import com.xworkz.weaponapp.dto.SearchDTO;
 import com.xworkz.weaponapp.dto.WeaponDTO;
@@ -47,6 +48,43 @@ public class WeaponServiceImpl implements WeaponService {
         } else {
             System.out.println("Data not validated");
             throw new DataInvalidException("Data not saved successfully!!");
+        }
+    }
+
+    @Override
+    public void validateAndUpdate(WeaponDTO weaponDTO) throws DataInvalidException {
+        boolean isDataValidated=false;
+       if (weaponDTO.getWeaponType()==null||weaponDTO.getWeaponType().isEmpty()){
+            System.err.println("Invalid weapon type");
+        } else if (weaponDTO.getSerialNumber()==null||weaponDTO.getSerialNumber().isEmpty()) {
+            System.err.println("Invalid serial Number");
+        } else if (weaponDTO.getSpecification()==null||weaponDTO.getSpecification().isEmpty()) {
+            System.err.println("Invalid weapon specifications");
+        } else if (weaponDTO.getPrice()<0.0) {
+            System.err.println("Invalid Price");
+        }else{
+            isDataValidated=true;
+        }
+        if (isDataValidated) {
+            System.out.println("Data Validated");
+                weaponRepository.update(weaponDTO);
+                System.out.println("Data Updated Successfully!!!");
+                System.out.println("Weapon DTO : " + weaponDTO);
+        } else {
+            System.err.println("Data not validated");
+            throw new DataInvalidException("Data not saved successfully!!");
+        }
+    }
+
+    @Override
+    public void validateAndDelete(DeleteDTO deleteDTO) throws DataInvalidException {
+
+        if (deleteDTO.getWeaponId()>0){
+            weaponRepository.delete(deleteDTO);
+            System.out.println("Data Deleted...");
+        }else{
+            System.err.println("Id not validated!!");
+            throw new DataInvalidException("Weapon Id not Found!!!");
         }
     }
 

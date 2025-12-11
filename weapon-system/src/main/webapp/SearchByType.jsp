@@ -36,7 +36,7 @@
     </div>
 </nav>
 <div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-    <div class="card p-2 bg-body-secondary bg-opacity-75 border border-dark border-2 rounded" style="width: 60rem;">
+    <div class="card p-2 bg-body-secondary bg-opacity-75 border border-dark border-2 rounded" style="width: 65rem;">
         <div class="card-body">
             <h3 class="card-title fs-1 text-center fw-semibold text-dark text-uppercase"><b>Weapon Search</b></h3>
             <br>
@@ -48,8 +48,10 @@
                         <option value="Shotgun">Shotgun</option>
                         <option value="Rifle">Rifle</option>
                         <option value="Handgun">Handgun</option>
+                        <option value="Carbine">Carbine</option>
                         <option value="Pistol">Pistol</option>
                         <option value="Revolver">Revolver</option>
+                        <option value="SMG">SMG</option>
                         <option value="Sniper Rifle">Sniper Rifle</option>
                         <option value="Assault Rifle">Assault Rifle</option>
                     </select>
@@ -64,10 +66,10 @@
                     <p class="text-danger text-center border border-danger border-2 fs-3 fw-semibold col-md-10 ms-5 ps-5">${errorMessage}</p>
                 </c:if>
                 <c:if test="${not empty searchList}">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
+                    <table class="table table-bordered border-dark">
+                        <thead class="table-dark text-center">
                             <tr>
-                                <th scope="col">Id</th>
+                                <th scope="col">Weapon Id</th>
                                 <th scope="col">Weapon Name</th>
                                 <th scope="col">Weapon Type</th>
                                 <th scope="col">Serial Number</th>
@@ -80,14 +82,14 @@
                         <tbody>
                                 <c:forEach var="weapon" items="${searchList}">
                                     <tr>
-                                    <th scope="row">${weapon.weaponId}</th>
+                                    <th scope="row" class="text-center">${weapon.weaponId}</th>
                                     <td>${weapon.weaponName}</td>
                                     <td>${weapon.weaponType}</td>
                                     <td>${weapon.serialNumber}</td>
                                     <td>${weapon.specification}</td>
                                     <td>${weapon.price}</td>
-                                    <td> <a href="editProfile?weaponName=${weapon.weaponName}" class="btn btn-dark fs-5">Edit</a></td>
-                                    <td> <a href="editProfile?weaponName=${weapon.weaponName}" class="btn btn-dark fs-5">Delete</a></td>
+                                    <td class="text-center"> <a href="editProfile?weaponName=${weapon.weaponName}" class="btn btn-dark fs-5">Edit</a></td>
+                                    <td class="text-center"> <a href="delete?weaponId=${weapon.weaponId}" class="btn btn-dark fs-5">Delete</a></td>
                                     </tr>
                                 </c:forEach>
                         </tbody>
