@@ -3,9 +3,13 @@ package com.xworkz.flipkart.dao.impl;
 import com.xworkz.flipkart.dao.FlipkartDAO;
 import com.xworkz.flipkart.dto.FlipkartUserDTO;
 import com.xworkz.flipkart.constants.DBConstants;
+import com.xworkz.flipkart.dto.SearchDTO;
 import lombok.SneakyThrows;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 public class FlipkartDAOImpl implements FlipkartDAO {
@@ -33,6 +37,25 @@ public class FlipkartDAOImpl implements FlipkartDAO {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    @SneakyThrows
+    public void update(FlipkartUserDTO flipkartUserDTO) {
+        String updateQuery = "update flipkart_users set user_name=?,user_contact_number=?,user_gender=?,user_age=?,user_address=? where user_contact_number=?;";
+
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
+        PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);){
+            preparedStatement.setString(1, flipkartUserDTO.getFullName());
+            preparedStatement.setLong(2,flipkartUserDTO.getContactNumber());
+            preparedStatement.setString(3,flipkartUserDTO.getGender());
+            preparedStatement.setInt(4,flipkartUserDTO.getAge());
+            preparedStatement.setString(5,flipkartUserDTO.getAddress());
+            preparedStatement.setLong(6,flipkartUserDTO.getContactNumber());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows Updated : "+rowsAffected);
+        }
     }
 
     @Override
@@ -72,5 +95,35 @@ public class FlipkartDAOImpl implements FlipkartDAO {
             }
         }
         return Optional.empty();
+    }
+
+    @Override
+    @SneakyThrows
+    public List<FlipkartUserDTO> findByLocation(SearchDTO searchDTO) {
+        String searchByLocationQuery = "Select * from flipkart_users where user_address=?;";
+
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
+        PreparedStatement preparedStatement = connection.prepareStatement(searchByLocationQuery);){
+            preparedStatement.setString(1,searchDTO.getAddress());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<FlipkartUserDTO> flipkartUserList = new ArrayList<>();
+            while (resultSet.next()){
+                int id = resultSet.getInt("user_id");
+                String userName = resultSet.getString("user_name");
+                Long contactNumber = resultSet.getLong("user_contact_number");
+                String gender = resultSet.getString("user_gender");
+                int age = resultSet.getInt("user_age");
+                String address = resultSet.getString("user_address");
+
+                FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,userName,contactNumber,gender,age,address);
+                System.out.println("Data found : "+flipkartUserDTO);
+                flipkartUserList.add(flipkartUserDTO);
+            }
+            return flipkartUserList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 }

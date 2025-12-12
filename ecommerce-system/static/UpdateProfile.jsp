@@ -20,6 +20,7 @@
                 <li class="text-white p-2 fs-3 fw-bold">${name}</li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="flipkartForm">Flipkart SignUp Form</a></li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByContact">Search</a></li>
+                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByLocation">Search</a></li>
             </ul>
         </div>
     </div>
@@ -33,7 +34,7 @@
             <div class="col-md-8">
                 <div class="card-body bg-body-tertiary">
                     <h2 class="card-title text-center">Update your Profile</h2><br>
-                    <form action="editProfile" method="get" onsubmit="return formValidation()">
+                    <form action="editProfile" method="post">
                         <div class="mb-3">
                             <label for="name" class="form-label fw-bolder fs-5">Full Name <span style="color:red;">*</span></label>
                             <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" value="${editDetails.getFullName()}" name="inputFullName" placeholder="enter your full name">
@@ -41,7 +42,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="contact" class="form-label fw-bolder fs-5">Contact Number <span style="color:red;">*</span></label>
-                            <input type="text" class="form-control" id="contact" name="inputContactNumber" disabled value="${editDetails.contactNumber}" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
+                            <input type="text" class="form-control" id="contact" name="inputContactNumber" readonly="readonly" value="${editDetails.contactNumber}" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
                             <span class="error text-danger" id="contactError"></span><br>
                         </div>
                         <div class="mb-3">
@@ -72,7 +73,7 @@
                         </div>
                         <br>
                         <div class="text-center mt-3">
-                            <button class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" id="submitBtn"  disabled>Update</button>
+                            <button class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" id="updateBtn"  disabled>Update</button>
                         </div>
                     </form>
                 </div>
@@ -80,7 +81,6 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<script src="script.js"></script>
+<script src="Update.js"></script>
 </body>
 </html>

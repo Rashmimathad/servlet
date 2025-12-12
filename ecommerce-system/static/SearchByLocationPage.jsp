@@ -27,7 +27,7 @@
     </div>
 </nav>
 <div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-    <div class="card mb-3" style="max-width: 700px;">
+    <div class="card mb-3" style="max-width: 1150px;">
         <div class="row g-0">
             <div class="col-md-4  bg-primary">
                 <img src="images/icon.png" class="img-fluid mt-5" alt="signup">
@@ -35,13 +35,14 @@
             <div class="col-md-8">
                 <div class="card-body bg-body-tertiary">
                     <h2 class="card-title text-center">Search</h2><br>
-                    <form action="searchByContact" method="get">
+                    <form action="searchByLocation" method="get">
 
                         <div class="mb-3">
-                            <label for="contact" class="form-label fw-bolder fs-5">Contact Number <span style="color:red;">*</span></label>
-                            <input type="text" class="form-control" id="contact" name="inputContactNumber" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
-                            <span class="error text-danger" id="contactError"></span><br>
+                            <label for="address" class="form-label fw-bolder fs-5">Address <span style="color:red;">*</span></label>
+                            <textarea class="form-control" id="address"  name="inputAddress" rows="3" onchange="validateAddress();enableSubmit()" placeholder="enter your address"></textarea>
+                            <span class="error text-danger" id="addressError"></span><br>
                         </div>
+
                         <div class="text-center mt-3">
                             <input class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" name="submitType" value="Search" id="searchBtn">
                             <input class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" name="submitType" value="Clear" id="clearBtn">
@@ -52,23 +53,34 @@
                             <p class="text-danger text-center border border-danger fs-4 fw-semibold">${errorMessage}</p>
                         </c:if>
                         <c:if test="${dto!=null}">
-                            <div class="card text-bg-light border-2 border-success mb-3 p-2">
-                                <h5 class="card-title text-center fw-bolder"><u>User Details</u></h5>
-                                <div class="card-body">
-                                    <p class="card-text">
-                                        <strong>Name : </strong>${dto.getFullName()}<br>
-                                        <strong>Contact Number :</strong> ${dto.getContactNumber()}<br>
-                                        <strong>Gender : </strong>${dto.getGender()}<br>
-                                        <strong>Age :</strong> ${dto.getAge()}<br>
-                                        <strong>Address : </strong>${dto.getAddress()}<br>
-                                    </p>
-                                    <div class="text-center mt-3">
-                                        <div class="text-center mt-3">
-                                            <a href="index" class="btn btn-primary fs-5 col-5 ">Go to Home</a>
-                                            <a href="editProfile?contactNo=${dto.contactNumber}" class="btn btn-primary fs-5  col-4 ">Edit</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <table class="table table-bordered border-primary">
+                                <thead class="table-primary text-center">
+                                <tr>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Contact Number</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="user" items="${dto}">
+                                    <tr>
+                                        <th scope="row" class="text-center">${user.id}</th>
+                                        <td>${user.fullName}</td>
+                                        <td>${user.contactNumber}</td>
+                                        <td>${user.gender}</td>
+                                        <td>${user.age}</td>
+                                        <td>${user.address}</td>
+                                        <td class="text-center"> <a href="editProfile?contactNo=${user.contactNumber}" class="btn btn-primary fs-6">Edit</a></td>
+                                        <td class="text-center"> <a href="delete?userId=${user.id}" class="btn btn-primary fs-6">Delete</a></td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </c:if>
                     </form>
                 </div>
