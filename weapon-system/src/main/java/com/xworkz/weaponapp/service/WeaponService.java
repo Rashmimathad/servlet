@@ -1,7 +1,6 @@
 package com.xworkz.weaponapp.service;
 
 import com.xworkz.weaponapp.dto.DeleteDTO;
-import com.xworkz.weaponapp.dto.SearchByTypeDTO;
 import com.xworkz.weaponapp.dto.SearchDTO;
 import com.xworkz.weaponapp.dto.WeaponDTO;
 import com.xworkz.weaponapp.exceptions.DataInvalidException;
@@ -14,5 +13,5 @@ public interface WeaponService {
         void validateAndUpdate(WeaponDTO weaponDTO) throws DataInvalidException;
         void validateAndDelete(DeleteDTO deleteDTO) throws DataInvalidException;
         Optional<WeaponDTO> validateName(SearchDTO searchDTO);
-        List<WeaponDTO> validateWeaponType(SearchByTypeDTO searchByTypeDTO);
+        List<WeaponDTO> validateWeaponType(SearchDTO searchDTO);
 }

@@ -88,8 +88,8 @@
                                     <td>${weapon.serialNumber}</td>
                                     <td>${weapon.specification}</td>
                                     <td>${weapon.price}</td>
-                                    <td class="text-center"> <a href="editProfile?weaponName=${weapon.weaponName}" class="btn btn-dark fs-6">Edit</a></td>
-                                    <td class="text-center"> <a href="delete?weaponId=${weapon.weaponId}" class="btn btn-dark fs-6">Delete</a></td>
+                                    <td class="text-center"> <a href="editProfile?weaponName=${weapon.weaponName}" class="btn btn-dark fs-6" id="editBtn">Edit</a></td>
+                                    <td class="text-center"> <a href="delete?weaponId=${weapon.weaponId}" class="btn btn-dark fs-6"  id="deleteBtn" onclick="openDeletePopup(event,'${weapon.weaponId}')">Delete</a></td>
                                     </tr>
                                 </c:forEach>
                         </tbody>
@@ -99,5 +99,36 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="deleteConfirmLabel">Confirm Delete</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fs-5 fw-semibold">
+                Are you sure you want to delete this weapon?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary p-2 col-md-2" data-bs-dismiss="modal">No</button>
+                <a id="confirmDeleteBtn" class="btn btn-danger p-2 col-md-2">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const deleteModalElement = document.getElementById('deleteConfirmModal');
+    const deleteModal = new bootstrap.Modal(deleteModalElement);
+
+      function openDeletePopup(event, weaponId) {
+          event.preventDefault();
+          document.getElementById('confirmDeleteBtn').href = 'delete?weaponId=' + weaponId;
+
+          deleteModal.show();
+      }
+</script>
+
+
 </body>
 </html>

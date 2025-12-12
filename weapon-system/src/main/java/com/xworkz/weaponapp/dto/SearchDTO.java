@@ -12,4 +12,9 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class SearchDTO implements Serializable {
     private String weaponName;
+    private String weaponType;
+    public SearchDTO(String weaponName)
+    {
+        this.weaponName=weaponName;
+    }
 }

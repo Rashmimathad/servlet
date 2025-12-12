@@ -34,7 +34,8 @@ public class SearchServlet extends HttpServlet {
        }else {
            String weaponName = req.getParameter("weaponName");
            if (weaponName != null && !weaponName.isEmpty()) {
-               Optional<WeaponDTO> searchDetails = weaponService.validateName(new SearchDTO(weaponName));
+               SearchDTO searchDTO=new SearchDTO(weaponName);
+               Optional<WeaponDTO> searchDetails = weaponService.validateName(searchDTO);
                if (searchDetails.isPresent()) {
                    req.setAttribute("dto", searchDetails.get());
                    req.setAttribute("successMessage", "Weapon Data found!!");

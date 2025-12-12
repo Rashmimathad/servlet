@@ -29,7 +29,7 @@ public class WeaponRepositoryImpl implements WeaponRepository {
     @Override
     @SneakyThrows
     public void save(WeaponDTO weaponDTO) {
-        String insertQuery = " insert into weapons(weapon_name,weapon_type,serial_number,weapon_specification,weapon_price) values (?,?,?,?,?);";
+        String insertQuery = "insert into weapons(weapon_name,weapon_type,serial_number,weapon_specification,weapon_price) values (?,?,?,?,?);";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);){
             preparedStatement.setString(1, weaponDTO.getWeaponName());
@@ -47,7 +47,7 @@ public class WeaponRepositoryImpl implements WeaponRepository {
     @Override
     @SneakyThrows
     public void update(WeaponDTO weaponDTO) {
-        String updateQuery = "update weapons set weapon_type=?,serial_number=?,weapon_specification=?,weapon_price=? where weapon_name=?;";
+        String updateQuery = "update weapons set weapon_type=?,serial_number=?,weapon_specification=?,weapon_price=? where weapon_name=? and is_deleted=0;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);){
             preparedStatement.setString(1, weaponDTO.getWeaponType());
@@ -64,7 +64,7 @@ public class WeaponRepositoryImpl implements WeaponRepository {
     @Override
     @SneakyThrows
     public void delete(DeleteDTO deleteDTO) {
-        String deleteByIdQuery = "delete from weapons where weapon_id=?;";
+        String deleteByIdQuery = "update weapons set is_deleted=1 where weapon_id=?;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(deleteByIdQuery);){
             preparedStatement.setInt(1,deleteDTO.getWeaponId());
@@ -76,7 +76,7 @@ public class WeaponRepositoryImpl implements WeaponRepository {
 
     @Override
     public boolean checkDuplicateWeaponName(String weaponName) {
-      String duplicateCheck = "select 1 from weapons where weapon_name=?;";
+      String duplicateCheck = "select 1 from weapons where weapon_name=? and is_deleted=0;";
       try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
       PreparedStatement preparedStatement = connection.prepareStatement(duplicateCheck);){
           preparedStatement.setString(1,weaponName);
@@ -92,7 +92,7 @@ public class WeaponRepositoryImpl implements WeaponRepository {
 
     @Override
     public Optional<WeaponDTO> findByWeaponName(String weaponName) {
-        String searchQuery = "select * from weapons where weapon_name=?;";
+        String searchQuery = "select * from weapons where weapon_name=? and is_deleted=0;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
             PreparedStatement preparedStatement = connection.prepareStatement(searchQuery);){
             preparedStatement.setString(1,weaponName);
@@ -119,10 +119,10 @@ public class WeaponRepositoryImpl implements WeaponRepository {
     @Override
     @SneakyThrows
     public List<WeaponDTO> findWeaponByType(String weaponType) {
-        String searchByType = "select * from weapons where weapon_type=?;";
+        String searchByType = "select * from weapons where weapon_type=? and is_deleted=0;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(searchByType);){
-            preparedStatement.setString(1,weaponType);
+            preparedStatement.setString(1, weaponType);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             List<WeaponDTO> weaponsList = new ArrayList<>();

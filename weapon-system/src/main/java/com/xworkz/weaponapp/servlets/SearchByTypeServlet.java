@@ -1,6 +1,6 @@
 package com.xworkz.weaponapp.servlets;
 
-import com.xworkz.weaponapp.dto.SearchByTypeDTO;
+import com.xworkz.weaponapp.dto.SearchDTO;
 import com.xworkz.weaponapp.dto.WeaponDTO;
 import com.xworkz.weaponapp.service.WeaponService;
 import com.xworkz.weaponapp.service.impl.WeaponServiceImpl;
@@ -27,18 +27,18 @@ public class SearchByTypeServlet extends HttpServlet {
         } else {
             String weaponType = req.getParameter("weaponType");
             if (weaponType != null && !weaponType.isEmpty()) {
-                List<WeaponDTO> searchDetails = weaponService.validateWeaponType(new SearchByTypeDTO(weaponType));
+                List<WeaponDTO> searchDetails = weaponService.validateWeaponType(new SearchDTO(null,weaponType));
                 if (searchDetails.iterator().hasNext()) {
                     req.setAttribute("searchList", searchDetails);
                     System.out.println("Weapons found : " + searchDetails.size() + " for weapon type : " + weaponType);
                     req.setAttribute("successMessage", "Weapon Details found!!");
                 } else if (searchDetails.isEmpty()){
                     System.err.println("Weapon not found");
-                    req.setAttribute("errorMessage", "Weapon Details not found!!");
+                    req.setAttribute("errorMessage", weaponType+" Weapon Type Details not found!!");
                 }
             }else if (weaponType==""){
                 System.err.println("Weapon not found");
-                req.setAttribute("errorMessage", "Weapon Details not found!!");
+                req.setAttribute("errorMessage", weaponType+" Weapon Type Details not found!!");
             }
         }
         req.getRequestDispatcher("SearchByType.jsp").forward(req, resp);
