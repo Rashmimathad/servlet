@@ -70,6 +70,17 @@ public class FlipkartServiceImpl implements FlipkartService {
     }
 
     @Override
+    public void validateAndDelete(int id) throws DataInvalidException {
+        if (id>0){
+            System.out.println("ID Validated");
+            flipkartDAO.delete(id);
+        }else {
+            System.err.println("ID not validated");
+            throw new DataInvalidException("ID not found");
+        }
+    }
+
+    @Override
     public Optional<FlipkartUserDTO> validateContactNumber(SearchDTO searchDTO) {
         if (searchDTO.getContactNo()<=0) {
             System.err.println("Invalid contact number");
@@ -83,7 +94,7 @@ public class FlipkartServiceImpl implements FlipkartService {
     @Override
     public List<FlipkartUserDTO> validateLocation(SearchDTO searchDTO) {
         if (searchDTO.getAddress()==null||searchDTO.getAddress().isEmpty()) {
-            System.err.println("Invalid contact number");
+            System.err.println("Invalid address");
             return Collections.emptyList();
         }
         System.out.println("Data validated");

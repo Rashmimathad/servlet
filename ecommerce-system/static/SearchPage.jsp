@@ -8,7 +8,7 @@
     <title>Search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-primary-subtle">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-sm-top" style="height: 60px;">
     <div class="container-fluid">
         <a class="navbar-brand fs-3 fw-bold text-white" href="index">Home</a>
@@ -18,10 +18,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="text-white p-2 fs-3 fw-bold">${name}</li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="flipkartForm">Flipkart SignUp Form</a></li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByContact">Search</a></li>
-                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByLocation">Search</a></li>
+                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByLocation">Search By Location</a></li>
             </ul>
         </div>
     </div>

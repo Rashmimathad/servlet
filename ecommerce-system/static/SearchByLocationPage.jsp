@@ -8,7 +8,7 @@
     <title>Search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-primary-subtle">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-sm-top" style="height: 60px;">
     <div class="container-fluid">
         <a class="navbar-brand fs-3 fw-bold text-white" href="index">Home</a>
@@ -18,19 +18,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="text-white p-2 fs-3 fw-bold">${name}</li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="flipkartForm">Flipkart SignUp Form</a></li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByContact">Search</a></li>
-                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByLocation">Search</a></li>
+                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByLocation">Search By Location</a></li>
+
             </ul>
         </div>
     </div>
 </nav>
 <div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-    <div class="card mb-3" style="max-width: 1150px;">
+    <div class="card mb-3 opacity-10" style="max-width: 1150px;">
         <div class="row g-0">
             <div class="col-md-4  bg-primary">
-                <img src="images/icon.png" class="img-fluid mt-5" alt="signup">
+                <img src="images/icon.png" class="img-fluid mt-5 pe-5" alt="signup">
             </div>
             <div class="col-md-8">
                 <div class="card-body bg-body-tertiary">
@@ -53,10 +53,10 @@
                             <p class="text-danger text-center border border-danger fs-4 fw-semibold">${errorMessage}</p>
                         </c:if>
                         <c:if test="${dto!=null}">
-                            <table class="table table-bordered border-primary">
+                            <table class="table table-bordered">
                                 <thead class="table-primary text-center">
                                 <tr>
-                                    <th scope="col">User Id</th>
+                                    <th scope="col">Id</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Contact Number</th>
                                     <th scope="col">Gender</th>
@@ -76,7 +76,7 @@
                                         <td>${user.age}</td>
                                         <td>${user.address}</td>
                                         <td class="text-center"> <a href="editProfile?contactNo=${user.contactNumber}" class="btn btn-primary fs-6">Edit</a></td>
-                                        <td class="text-center"> <a href="delete?userId=${user.id}" class="btn btn-primary fs-6">Delete</a></td>
+                                        <td class="text-center"> <a href="delete?userId=${user.id}" class="btn btn-primary fs-6"  onclick="openDeletePopup(event,'${user.id}')">Delete</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -88,5 +88,35 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="deleteConfirmLabel">Confirm Delete</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fs-5 fw-semibold">
+                Are you sure you want to delete this profile?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary p-2 col-md-2" data-bs-dismiss="modal">No</button>
+                <a id="confirmDeleteBtn" class="btn btn-danger p-2 col-md-2">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const deleteModalElement = document.getElementById('deleteConfirmModal');
+    const deleteModal = new bootstrap.Modal(deleteModalElement);
+
+      function openDeletePopup(event, userId) {
+          event.preventDefault();
+          document.getElementById('confirmDeleteBtn').href = 'delete?userId=' + userId;
+
+          deleteModal.show();
+      }
+</script>
+
 </body>
 </html>

@@ -32,14 +32,16 @@ public class SearchByLocationServlet extends HttpServlet {
             req.setAttribute("dto",null);
         }else {
             String address = req.getParameter("inputAddress");
+            if (address!=null&&!address.isEmpty()) {
                 List<FlipkartUserDTO> searchDetails = flipkartService.validateLocation(new SearchDTO(address));
-                if (!searchDetails.isEmpty()) {
-                    req.setAttribute("dto", searchDetails);
-                } else {
-                    System.err.println("Contact number not found");
-                    req.setAttribute("errorMessage", "Contact Number not found!!");
+                if (searchDetails.isEmpty()) {
+                    System.err.println("Users not found");
+                    req.setAttribute("errorMessage", "Users not found!!");
                 }
+                else
+                    req.setAttribute("dto", searchDetails);
             }
-        req.getRequestDispatcher("SearchByLocationPage.jsp").forward(req,resp);
         }
+        req.getRequestDispatcher("SearchByLocationPage.jsp").forward(req,resp);
+    }
 }

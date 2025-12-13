@@ -8,7 +8,7 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-body-secondary">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-sm-top" style="height: 60px;">
     <div class="container-fluid">
         <a class="navbar-brand fs-3 fw-bold text-white" href="index">Home</a>
@@ -21,7 +21,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="flipkartForm">Flipkart SignUp Form</a></li>
                 <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByContact">Search</a></li>
-                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByLocation">Search</a></li>
+                <li class="nav-item"><a class="nav-link active fs-3 fw-bold" href="searchByLocation">Search By Location</a></li>
             </ul>
         </div>
     </div>
@@ -32,16 +32,10 @@
     <div class="position-absolute top-0 start-0 w-100 h-100"></div>
 </div>
 
-<div class="position-relative container text-center mt-5 mx-auto p-2">
-
-    <h1 class="mb-4 text-primary">Available Forms</h1>
-    <p class="lead text-primary fw-bold">Choose a form below to continue:</p>
-
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-5">
-            <a href="flipkartForm" class="btn btn-primary w-100 mb-3 fw-semibold fs-4">Flipkart SignUp Form</a>
-        </div>
-    </div>
+<div class="position-relative container bg-body-tertiary w-50 opacity-10 mt-5  p-5">
+   <h3 class="text-center fw-bolder text-dark">
+       Welcome to Flipkart App!!
+   </h3>
 </div>
 </body>
 </html>

@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface FlipkartDAO {
     void save(FlipkartUserDTO flipkartUserDTO);
     void update(FlipkartUserDTO flipkartUserDTO);
+    void delete(int id);
     default boolean contactNumberCheck(Long contactNumber){
         return false;
     }

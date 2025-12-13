@@ -42,7 +42,7 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     @Override
     @SneakyThrows
     public void update(FlipkartUserDTO flipkartUserDTO) {
-        String updateQuery = "update flipkart_users set user_name=?,user_contact_number=?,user_gender=?,user_age=?,user_address=? where user_contact_number=?;";
+        String updateQuery = "update flipkart_users set user_name=?,user_contact_number=?,user_gender=?,user_age=?,user_address=? where user_contact_number=? and is_deleted=0;";
 
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);){
@@ -60,8 +60,22 @@ public class FlipkartDAOImpl implements FlipkartDAO {
 
     @Override
     @SneakyThrows
+    public void delete(int id) {
+        String deleteQuery = "update flipkart_users set is_deleted = 1 where user_id=?;";
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);){
+            preparedStatement.setInt(1,id);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("User deleted");
+            System.out.println("Rows Affected = "+rowsAffected);
+        }
+    }
+
+    @Override
+    @SneakyThrows
     public boolean contactNumberCheck(Long contactNumber) {
-        String checkContactNumber = "select 1 from flipkart_users where user_contact_number=?;";
+        String checkContactNumber = "select 1 from flipkart_users where user_contact_number=? and is_deleted=0;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(checkContactNumber);){
          preparedStatement.setLong(1,contactNumber);
@@ -76,7 +90,7 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     @Override
     @SneakyThrows
     public Optional<FlipkartUserDTO> findByContactNo(Long contactNo) {
-        String searchByContact = "SELECT * from flipkart_users where user_contact_number=?;";
+        String searchByContact = "SELECT * from flipkart_users where user_contact_number=? and is_deleted=0;";
         try(Connection connection=DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(searchByContact);) {
             preparedStatement.setLong(1,contactNo);
@@ -100,7 +114,7 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     @Override
     @SneakyThrows
     public List<FlipkartUserDTO> findByLocation(SearchDTO searchDTO) {
-        String searchByLocationQuery = "Select * from flipkart_users where user_address=?;";
+        String searchByLocationQuery = "Select * from flipkart_users where user_address=? and is_deleted=0;";
 
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(searchByLocationQuery);){
