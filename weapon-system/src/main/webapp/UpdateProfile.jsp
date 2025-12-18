@@ -37,6 +37,7 @@
 <div class="d-flex justify-content-center align-items-center" style="height:100vh;">
     <div class="card p-2 bg-body-secondary bg-opacity-75 border border-dark border-2 rounded" style="width: 45rem;">
         <div class="card-body">
+            <input class="btn btn-dark btn-lg px-3 fw-bolder" type="submit" name="submitType" value="Back" id="backBtn"  onclick="history.back();"/>
             <h3 class="card-title fs-1 text-center fw-semibold text-dark text-uppercase"><b>Weapon Update Form</b></h3>
             <br>
             <form action="editProfile" method="post">

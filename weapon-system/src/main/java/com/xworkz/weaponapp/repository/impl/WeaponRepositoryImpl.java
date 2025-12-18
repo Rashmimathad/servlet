@@ -30,15 +30,15 @@ public class WeaponRepositoryImpl implements WeaponRepository {
     @SneakyThrows
     public void save(WeaponDTO weaponDTO) {
         String insertQuery = "insert into weapons(weapon_name,weapon_type,serial_number,weapon_specification,weapon_price) values (?,?,?,?,?);";
-        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);){
-            preparedStatement.setString(1, weaponDTO.getWeaponName());
-            preparedStatement.setString(2, weaponDTO.getWeaponType());
-            preparedStatement.setString(3,weaponDTO.getSerialNumber());
-            preparedStatement.setString(4, weaponDTO.getSpecification());
-            preparedStatement.setDouble(5,weaponDTO.getPrice());
-            int rowsAffected = preparedStatement.executeUpdate();
-            System.out.println("Rows Affected : " + rowsAffected);
+                   preparedStatement.setString(1, weaponDTO.getWeaponName());
+                   preparedStatement.setString(2, weaponDTO.getWeaponType());
+                   preparedStatement.setString(3,weaponDTO.getSerialNumber());
+                   preparedStatement.setString(4, weaponDTO.getSpecification());
+                   preparedStatement.setDouble(5,weaponDTO.getPrice());
+                  int rowsAffected1 =  preparedStatement.executeUpdate();
+                   System.out.println("Rows Affected1 : "+rowsAffected1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class WeaponRepositoryImpl implements WeaponRepository {
     @Override
     @SneakyThrows
     public void update(WeaponDTO weaponDTO) {
-        String updateQuery = "update weapons set weapon_type=?,serial_number=?,weapon_specification=?,weapon_price=? where weapon_name=? and is_deleted=0;";
+        String updateQuery = "update weapons set weapon_type=?,serial_number=?,weapon_specification=?,weapon_price=?,is_deleted=0 where weapon_name=? and is_deleted=0 or is_deleted=1;";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);){
             preparedStatement.setString(1, weaponDTO.getWeaponType());
@@ -143,5 +143,26 @@ public class WeaponRepositoryImpl implements WeaponRepository {
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    @SneakyThrows
+    public List<String> enableDeletedData(WeaponDTO weaponDTO) {
+        String deleteCheckQuery = "select * from weapons where is_deleted=1;";
+        try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(), DBConstants.DB.getPassword());
+             PreparedStatement preparedStatement = connection.prepareStatement(deleteCheckQuery);){
+
+          ResultSet rs =  preparedStatement.executeQuery();
+          List<String> deletedRowsList = new ArrayList<>();
+          while (rs.next()){
+              deletedRowsList.add(rs.getString("weapon_name"));
+          }
+          if (deletedRowsList.isEmpty()){
+              return Collections.emptyList();
+          }
+          return deletedRowsList;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

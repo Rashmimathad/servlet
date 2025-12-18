@@ -40,7 +40,9 @@
         <img src="images/successImage.jpg" class="card-img-top p-3" alt="success">
         <h5 class="card-title text-center fw-bold text-uppercase fs-3"  style="color:red;">${errorMessage}</h5>
         <h5 class="card-title text-center fw-bold fs-3 text-uppercase"  style="color:green;">${successMessage}</h5>
+        <input class="btn btn-dark btn-lg px-5 m-3 fw-bolder" type="submit" name="submitType" value="Back" id="backBtn"  onclick="history.back();"/>
     </div>
+
 </div>
 </body>
 </html>

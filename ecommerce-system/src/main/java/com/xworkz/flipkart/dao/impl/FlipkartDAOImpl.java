@@ -23,7 +23,7 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     }
     @Override
     public void save(FlipkartUserDTO flipkartUserDTO) {
-        String insertQuery = "insert into flipkart_users(user_name,user_contact_number,user_gender,user_age,user_address) values (?,?,?,?,?);";
+        String insertQuery = "insert into flipkart_users(user_name,user_contact_number,user_gender,user_age,user_address,user_password,user_confirm_password) values (?,?,?,?,?,?,?);";
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
             PreparedStatement preparedStatement= connection.prepareStatement(insertQuery);){
             preparedStatement.setString(1,flipkartUserDTO.getFullName());
@@ -31,6 +31,8 @@ public class FlipkartDAOImpl implements FlipkartDAO {
             preparedStatement.setString(3,flipkartUserDTO.getGender());
             preparedStatement.setInt(4,flipkartUserDTO.getAge());
             preparedStatement.setString(5,flipkartUserDTO.getAddress());
+            preparedStatement.setString(6, flipkartUserDTO.getPassword());
+            preparedStatement.setString(7, flipkartUserDTO.getConfirmPassword());
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println("Rows Affected : "+rowsAffected);
         } catch (Exception e) {
@@ -42,7 +44,7 @@ public class FlipkartDAOImpl implements FlipkartDAO {
     @Override
     @SneakyThrows
     public void update(FlipkartUserDTO flipkartUserDTO) {
-        String updateQuery = "update flipkart_users set user_name=?,user_contact_number=?,user_gender=?,user_age=?,user_address=? where user_contact_number=? and is_deleted=0;";
+        String updateQuery = "update flipkart_users set user_name=?,user_contact_number=?,user_gender=?,user_age=?,user_address=?,user_password=?,user_confirm_password=? where user_contact_number=? and is_deleted=0;";
 
         try(Connection connection = DriverManager.getConnection(DBConstants.DB.getUrl(),DBConstants.DB.getUserName(),DBConstants.DB.getPassword());
         PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);){
@@ -51,7 +53,9 @@ public class FlipkartDAOImpl implements FlipkartDAO {
             preparedStatement.setString(3,flipkartUserDTO.getGender());
             preparedStatement.setInt(4,flipkartUserDTO.getAge());
             preparedStatement.setString(5,flipkartUserDTO.getAddress());
-            preparedStatement.setLong(6,flipkartUserDTO.getContactNumber());
+            preparedStatement.setString(6, flipkartUserDTO.getPassword());
+            preparedStatement.setString(7, flipkartUserDTO.getConfirmPassword());
+            preparedStatement.setLong(8,flipkartUserDTO.getContactNumber());
 
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println("Rows Updated : "+rowsAffected);
@@ -102,7 +106,9 @@ public class FlipkartDAOImpl implements FlipkartDAO {
                 String gender = resultSet.getString("user_gender");
                 int age = resultSet.getInt("user_age");
                 String address = resultSet.getString("user_address");
-                FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,fullName,contactNumber,gender,age,address);
+                String password = resultSet.getString("user_password");
+                String confirmPassword = resultSet.getString("user_confirm_password");
+                FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,fullName,contactNumber,gender,age,address,password,confirmPassword);
                 System.out.println("User details found");
                 System.out.println("Is flipkart user DTO present : "+Optional.of(flipkartUserDTO).get());
                 return Optional.of(flipkartUserDTO);
@@ -129,8 +135,10 @@ public class FlipkartDAOImpl implements FlipkartDAO {
                 String gender = resultSet.getString("user_gender");
                 int age = resultSet.getInt("user_age");
                 String address = resultSet.getString("user_address");
+                String password = resultSet.getString("user_password");
+                String confirmPassword = resultSet.getString("user_confirm_password");
 
-                FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,userName,contactNumber,gender,age,address);
+                FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(id,userName,contactNumber,gender,age,address,password,confirmPassword);
                 System.out.println("Data found : "+flipkartUserDTO);
                 flipkartUserList.add(flipkartUserDTO);
             }

@@ -28,8 +28,10 @@ public class EditProfileServlet extends HttpServlet {
         String gender = req.getParameter("gender");
         int age = NumberValidation.parseIntSafe(req.getParameter("inputAge"));
         String address = req.getParameter("inputAddress");
+        String password = req.getParameter("password");
+        String confirmPassword = req.getParameter("confirmPassword");
         try{
-            FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(fullName,contactNo,gender,age,address);
+            FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(fullName,contactNo,gender,age,address,password,confirmPassword);
             flipkartService.validateAndUpdate(flipkartUserDTO);
             System.out.println("Data Validated and Saved");
             req.setAttribute("dto",flipkartUserDTO);

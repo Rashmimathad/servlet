@@ -55,7 +55,7 @@
                     <p class="text-danger text-center border border-danger fs-4 fw-semibold">${errorMessage}</p>
                 </c:if>
                 <c:if test="${dto!=null}">
-                    <input class="btn btn-dark btn-lg px-5 m-2 fw-bolder" type="submit" name="submitType" value="Back" id="backBtn"/>
+                    <input class="btn btn-dark btn-lg px-5 m-2 fw-bolder" type="submit" name="submitType" value="Back" id="backBtn"  onclick="history.back();"/>
                         <div class="card p-3 ms-5 bg-body-secondary bg-opacity-50 border border-dark border-2 rounded" style="width: 35rem;">
                             <div class="card-body">
                                     <p class="text-success text-center  fs-3 fw-semibold">${successMessage}</p>

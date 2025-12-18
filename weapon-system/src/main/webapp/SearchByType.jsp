@@ -62,10 +62,11 @@
                     <input class="btn btn-dark btn-lg px-5 m-2 fw-bolder" type="submit" name="submitType" value="Clear" id="clearBtn">
                 </div>
                 <br>
-                <c:if test="${not empty errorMessage}">
+                <c:if test="${not empty errorMessage and param.submitType ne 'Back'}">
                     <p class="text-danger text-center border border-danger border-2 fs-3 fw-semibold col-md-10 ms-5 ps-5">${errorMessage}</p>
                 </c:if>
                 <c:if test="${not empty searchList}">
+                    <input class="btn btn-dark btn-lg px-5 m-2 fw-bolder" type="submit" name="submitType" value="Back" id="backBtn"  onclick="history.back();"/>
                     <table class="table table-bordered border-dark">
                         <thead class="table-dark text-center">
                             <tr>

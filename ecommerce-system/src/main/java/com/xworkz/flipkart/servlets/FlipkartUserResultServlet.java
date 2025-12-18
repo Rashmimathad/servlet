@@ -11,6 +11,6 @@ import java.io.IOException;
 public class FlipkartUserResultServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("FlipkartUserResult.jsp").forward(req,resp);
+        req.getRequestDispatcher("RegisterationResponse.jsp").forward(req,resp);
     }
 }

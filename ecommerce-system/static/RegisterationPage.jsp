@@ -25,27 +25,27 @@
         </div>
     </div>
 </nav>
-<div class="d-flex justify-content-center align-items-center" style="height:100vh;">
-    <div class="card mb-3" style="max-width: 840px;">
+<div class="d-flex justify-content-center align-items-start mt-3">
+    <div class="card mb-2" style="max-width: 950px;">
         <div class="row g-0">
             <div class="col-md-4  bg-primary">
                 <img src="images/icon.png" class="img-fluid mt-5" alt="signup">
             </div>
             <div class="col-md-8">
                 <div class="card-body bg-body-tertiary">
-                    <h2 class="card-title text-center">Sign Up</h2><br>
+                    <h2 class="card-title text-center mb-1">Sign Up</h2><br>
                     <form action="flipkartForm" method="post" onsubmit="return formValidation()">
-                        <div class="mb-3">
+                        <div class="mb-1">
                             <label for="name" class="form-label fw-bolder fs-5">Full Name <span style="color:red;">*</span></label>
-                            <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" onkeydown="console.log('jhvc')" name="inputFullName" placeholder="enter your full name">
+                            <input type="text" class="form-control" id="name" onchange="validateName();enableSubmit()" onkeydown="console.log('jhvc')" name="inputFullName" placeholder="Enter your full name">
                             <span class="error text-danger" id="nameError"></span><br>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-1">
                             <label for="contact" class="form-label fw-bolder fs-5">Contact Number <span style="color:red;">*</span></label>
-                            <input type="text" class="form-control" id="contact" name="inputContactNumber" onchange="validateContact();enableSubmit()" placeholder="enter contact number">
+                            <input type="text" class="form-control" id="contact" name="inputContactNumber" onchange="validateContact();enableSubmit()" placeholder="Enter contact number">
                             <span class="error text-danger" id="contactError"></span><br>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-1">
                             <p class="form-label fw-bolder fs-5">Gender <span style="color:red;">*</span></p>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" onclick="validateGender();enableSubmit()"  name="gender" value="Male" id="male">
@@ -61,17 +61,27 @@
                             </div>
                             <span class="error text-danger" id="genderError"></span><br>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-1">
                             <label for="age" class="form-label fw-bolder fs-5">Age <span style="color:red;">*</span></label>
-                            <input type="number" class="form-control" id="age" name="inputAge" onchange="validateAge();enableSubmit()" placeholder="enter your age">
+                            <input type="number" class="form-control" id="age" name="inputAge" onchange="validateAge();enableSubmit()" placeholder="Enter your age">
                             <span class="error text-danger" id="ageError"></span><br>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-1">
                             <label for="address" class="form-label fw-bolder fs-5">Address <span style="color:red;">*</span></label>
-                            <textarea class="form-control" id="address"  name="inputAddress" rows="3" onchange="validateAddress();enableSubmit()" placeholder="enter your address"></textarea>
+                            <textarea class="form-control" id="address"  name="inputAddress" rows="3" onchange="validateAddress();enableSubmit()" placeholder="Enter your address"></textarea>
                             <span class="error text-danger" id="addressError"></span><br>
                         </div>
-                        <br>
+                        <div class="mb-1">
+                            <label for="password" class="form-label fw-bolder fs-5">Password<span style="color:red;">*</span></label>
+                            <input type="password" class="form-control" id="password" name="password" onchange="validatePassword();enableSubmit()" placeholder="Enter password">
+                            <span class="error text-danger" id="passwordError"></span><br>
+                        </div>
+
+                        <div class="mb-1">
+                            <label for="confirmPassword" class="form-label fw-bolder fs-5">Confirm Password <span style="color:red;">*</span></label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" onchange="validateConfirmPassword();enableSubmit()" placeholder="Re-enter password">
+                            <span class="error text-danger" id="confirmPasswordError"></span><br>
+                        </div>
                         <div class="text-center mt-3">
                             <button class="btn btn-primary btn-lg px-5 fw-bolder" type="submit" id="submitBtn"  disabled>Sign Up</button>
                         </div>

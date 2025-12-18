@@ -21,4 +21,5 @@ public interface WeaponRepository {
     default List<WeaponDTO> findWeaponByType(String weaponType){
         return Collections.emptyList();
     }
+    List<String> enableDeletedData(WeaponDTO weaponDTO);
 }

@@ -24,8 +24,10 @@ public class FlipkartServlet extends HttpServlet {
         String gender = req.getParameter("gender");
         int age = NumberValidation.parseIntSafe(req.getParameter("inputAge"));
         String address = req.getParameter("inputAddress");
+        String password = req.getParameter("password");
+        String confirmPassword = req.getParameter("confirmPassword");
         try{
-            FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(fullName,contactNumber,gender,age,address);
+            FlipkartUserDTO flipkartUserDTO = new FlipkartUserDTO(fullName,contactNumber,gender,age,address,password,confirmPassword);
             flipkartService.validateAndSave(flipkartUserDTO);
             req.setAttribute("dto",flipkartUserDTO);
             req.setAttribute("successMessage","Data Saved Successfully!!");
@@ -34,11 +36,11 @@ public class FlipkartServlet extends HttpServlet {
             req.setAttribute("errorMessage",e.getMessage());
             e.printStackTrace();
         }
-        req.getRequestDispatcher("FlipkartUserResult.jsp").forward(req,resp);
+        req.getRequestDispatcher("RegisterationResponse.jsp").forward(req,resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("FlipkartForm.jsp").forward(req,resp);
+        req.getRequestDispatcher("RegisterationPage.jsp").forward(req,resp);
     }
 }

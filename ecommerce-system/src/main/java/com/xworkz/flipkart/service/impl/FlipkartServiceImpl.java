@@ -27,7 +27,11 @@ public class FlipkartServiceImpl implements FlipkartService {
             System.err.println("Invalid Age");
         } else if (flipkartUserDTO.getAddress()==null||flipkartUserDTO.getAddress().isEmpty()) {
             System.err.println("Invalid Address");
-        }else{
+        } else if (flipkartUserDTO.getPassword()==null||flipkartUserDTO.getPassword().isEmpty()) {
+            System.err.println("Invalid Password");
+        } else if (flipkartUserDTO.getConfirmPassword()==null||flipkartUserDTO.getConfirmPassword().isEmpty()) {
+            System.err.println("Invalid Confirm Password");
+        } else{
             isUserValidated=true;
         }
         if (isUserValidated){

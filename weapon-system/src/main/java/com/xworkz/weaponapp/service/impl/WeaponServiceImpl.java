@@ -36,18 +36,27 @@ public class WeaponServiceImpl implements WeaponService {
         }
         if (isDataValidated) {
             System.out.println("Data Validated");
-            boolean isDuplicateName = weaponRepository.checkDuplicateWeaponName(weaponDTO.getWeaponName());
-            if (!isDuplicateName) {
-                weaponRepository.save(weaponDTO);
-                System.out.println("Data Saved Successfully!!!");
-                System.out.println("Weapon DTO : " + weaponDTO);
-            }else{
-                throw new DuplicateWeaponNameException("Weapon Already Exists");
+            List<String> deletedElementsList = weaponRepository.enableDeletedData(weaponDTO);
+            while (deletedElementsList.iterator().hasNext()) {
+                if (deletedElementsList.iterator().next().equalsIgnoreCase(weaponDTO.getWeaponName())) {
+                    weaponRepository.update(weaponDTO);
+                    break;
+                } else {
+                    boolean isDuplicateName = weaponRepository.checkDuplicateWeaponName(weaponDTO.getWeaponName());
+                    if (!isDuplicateName) {
+                        weaponRepository.save(weaponDTO);
+                        System.out.println("Data Saved Successfully!!!");
+                        System.out.println("Weapon DTO : " + weaponDTO);
+                    } else {
+                        throw new DuplicateWeaponNameException("Weapon Already Exists");
+                    }
+                }
             }
-        } else {
+        } else{
             System.out.println("Data not validated");
             throw new DataInvalidException("Data not saved successfully!!");
         }
+
     }
 
     @Override
@@ -77,7 +86,6 @@ public class WeaponServiceImpl implements WeaponService {
 
     @Override
     public void validateAndDelete(DeleteDTO deleteDTO) throws DataInvalidException {
-
         if (deleteDTO.getWeaponId()>0){
             weaponRepository.delete(deleteDTO);
             System.out.println("Data Deleted...");

@@ -70,6 +70,8 @@ function validatePrice() {
     return true;
 }
 
+
+
 function enableSubmit() {
     let isValid =
         validateWeaponName() &&
@@ -93,3 +95,4 @@ document.getElementById("price").onkeyup = function () {
     validatePrice();
     enableSubmit();
 };
+
